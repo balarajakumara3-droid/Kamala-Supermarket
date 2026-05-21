@@ -8,8 +8,8 @@
 // ============================================
 const CONFIG = {
   storeName: 'Kamala Supermarket',
-  whatsappNumber: '919876543210', // Replace with actual number
-  phone: '+91 98765 43210',
+  whatsappNumber: '918438659762', // Dynamically bound user WhatsApp number
+  phone: '+91 84386 59762',
   address: 'Main Road, Villupuram, Tamil Nadu 605602',
   workingHours: 'Mon–Sat: 7:00 AM – 10:00 PM | Sun: 8:00 AM – 9:00 PM',
   minOrder: 200,
@@ -29,6 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initMarquee();
   initCounters();
   initSearchModal();
+  bindGlobalContactDetails();
 });
 
 // ============================================
@@ -408,6 +409,54 @@ function showToast(message, type = 'success') {
     toast.style.transform = 'translateX(120%)';
     setTimeout(() => toast.remove(), 400);
   }, 3000);
+}
+
+// Dynamic binding of contact details
+function bindGlobalContactDetails() {
+  const wsNum = CONFIG.whatsappNumber; // '918438659762'
+  const telNum = CONFIG.phone; // '+91 84386 59762'
+  
+  // 1. Update all wa.me links dynamically
+  document.querySelectorAll('a[href*="wa.me"]').forEach(link => {
+    try {
+      const url = new URL(link.href);
+      const pathname = url.pathname;
+      // Replace path containing old/placeholder digits with CONFIG.whatsappNumber
+      if (pathname.includes('919876543210') || pathname.length <= 1) {
+        url.pathname = '/' + wsNum;
+      } else {
+        url.pathname = pathname.replace(/[0-9]+/g, wsNum);
+      }
+      link.href = url.toString();
+    } catch (e) {
+      link.href = link.href.replace(/wa\.me\/[0-9]+/g, `wa.me/${wsNum}`);
+      if (link.href.endsWith('wa.me/') || link.href.endsWith('wa.me')) {
+        link.href = `https://wa.me/${wsNum}`;
+      }
+    }
+  });
+
+  // 2. Update all tel: links
+  document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+    link.href = `tel:+91${wsNum}`;
+  });
+
+  // 3. Update all visual phone/WhatsApp numbers in text nodes
+  const phoneRegex = /\+91\s*98765\s*43210/g;
+  const walkTextNodes = (node) => {
+    if (node.nodeType === Node.TEXT_NODE) {
+      if (phoneRegex.test(node.nodeValue)) {
+        node.nodeValue = node.nodeValue.replace(phoneRegex, telNum);
+      }
+    } else {
+      if (node.nodeName !== 'SCRIPT' && node.nodeName !== 'STYLE') {
+        for (let child of node.childNodes) {
+          walkTextNodes(child);
+        }
+      }
+    }
+  };
+  walkTextNodes(document.body);
 }
 
 // ============================================
