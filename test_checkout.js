@@ -3,6 +3,7 @@
 // Uses Playwright. Run with: node test_checkout.js
 
 const { chromium } = require('playwright');
+const assert = require('node:assert/strict');
 
 async function runTest(viewport, label) {
   const browser = await chromium.launch();
@@ -18,8 +19,8 @@ async function runTest(viewport, label) {
     const sample = [{
       id: 'test123',
       name: 'Test Product',
-      price: 150,
-      mrp: 180,
+      price: 250,
+      mrp: 280,
       image: '',
       weight: '1kg',
       category: 'Test',
@@ -48,6 +49,19 @@ async function runTest(viewport, label) {
   // Proceed to Step 2
   await page.click('#checkout-next-btn');
   await page.waitForTimeout(500); // allow UI transition
+
+  // Verify the full payment gateway option is selectable and visible
+  await page.click('#pay-tab-razorpay');
+  await page.waitForSelector('#pay-panel-razorpay.active', { timeout: 3000 });
+  assert.equal(await page.isVisible('#pay-tab-razorpay.active'), true);
+  const gatewayText = await page.textContent('#pay-panel-razorpay');
+  assert.match(gatewayText, /UPI/);
+  assert.match(gatewayText, /Net Banking/);
+  assert.match(gatewayText, /EMI/);
+  assert.match(gatewayText, /Pay Later/);
+
+  // Switch back to COD and complete order
+  await page.click('#pay-tab-cod');
 
   // Select COD (already default) and complete order
   await page.click('#checkout-next-btn');

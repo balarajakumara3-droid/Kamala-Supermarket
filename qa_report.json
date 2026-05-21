@@ -1,0 +1,1102 @@
+[
+  {
+    "viewport": "desktop",
+    "page": "index.html",
+    "metrics": {
+      "clientWidth": 1440,
+      "innerWidth": 1440,
+      "scrollWidth": 1440,
+      "bodyScrollWidth": 1440,
+      "visibleWide": [
+        {
+          "tag": "div",
+          "cls": "marquee-track",
+          "id": "",
+          "x": -43,
+          "w": 4304,
+          "right": 4261
+        },
+        {
+          "tag": "span",
+          "cls": "",
+          "id": "",
+          "x": -43,
+          "w": 351,
+          "right": 308
+        },
+        {
+          "tag": "span",
+          "cls": "",
+          "id": "",
+          "x": 1227,
+          "w": 407,
+          "right": 1634
+        },
+        {
+          "tag": "span",
+          "cls": "",
+          "id": "",
+          "x": 1634,
+          "w": 475,
+          "right": 2109
+        },
+        {
+          "tag": "span",
+          "cls": "",
+          "id": "",
+          "x": 2109,
+          "w": 351,
+          "right": 2460
+        },
+        {
+          "tag": "span",
+          "cls": "",
+          "id": "",
+          "x": 2460,
+          "w": 390,
+          "right": 2850
+        },
+        {
+          "tag": "span",
+          "cls": "",
+          "id": "",
+          "x": 2850,
+          "w": 529,
+          "right": 3379
+        },
+        {
+          "tag": "span",
+          "cls": "",
+          "id": "",
+          "x": 3379,
+          "w": 407,
+          "right": 3786
+        },
+        {
+          "tag": "span",
+          "cls": "",
+          "id": "",
+          "x": 3786,
+          "w": 475,
+          "right": 4261
+        },
+        {
+          "tag": "div",
+          "cls": "shape shape-1",
+          "id": "",
+          "x": 940,
+          "w": 600,
+          "right": 1540
+        }
+      ],
+      "navToggleDisplay": "none"
+    },
+    "logs": []
+  },
+  {
+    "viewport": "desktop",
+    "page": "products.html",
+    "metrics": {
+      "clientWidth": 1440,
+      "innerWidth": 1440,
+      "scrollWidth": 1440,
+      "bodyScrollWidth": 1440,
+      "visibleWide": [
+        {
+          "tag": "div",
+          "cls": "cart-sidebar-header",
+          "id": "",
+          "x": 1440,
+          "w": 400,
+          "right": 1840
+        },
+        {
+          "tag": "h3",
+          "cls": "",
+          "id": "",
+          "x": 1464,
+          "w": 113,
+          "right": 1577
+        },
+        {
+          "tag": "button",
+          "cls": "cart-sidebar-close",
+          "id": "cart-close",
+          "x": 1780,
+          "w": 36,
+          "right": 1816
+        },
+        {
+          "tag": "div",
+          "cls": "cart-sidebar-body",
+          "id": "cart-body",
+          "x": 1440,
+          "w": 400,
+          "right": 1840
+        },
+        {
+          "tag": "div",
+          "cls": "cart-empty",
+          "id": "",
+          "x": 1456,
+          "w": 368,
+          "right": 1824
+        },
+        {
+          "tag": "div",
+          "cls": "empty-icon",
+          "id": "",
+          "x": 1480,
+          "w": 320,
+          "right": 1800
+        },
+        {
+          "tag": "h4",
+          "cls": "",
+          "id": "",
+          "x": 1480,
+          "w": 320,
+          "right": 1800
+        },
+        {
+          "tag": "p",
+          "cls": "",
+          "id": "",
+          "x": 1480,
+          "w": 320,
+          "right": 1800
+        }
+      ],
+      "navToggleDisplay": "none"
+    },
+    "logs": []
+  },
+  {
+    "viewport": "desktop",
+    "page": "order-online.html",
+    "metrics": {
+      "clientWidth": 1440,
+      "innerWidth": 1440,
+      "scrollWidth": 1440,
+      "bodyScrollWidth": 1440,
+      "visibleWide": [
+        {
+          "tag": "div",
+          "cls": "cart-sidebar-header",
+          "id": "",
+          "x": 1440,
+          "w": 400,
+          "right": 1840
+        },
+        {
+          "tag": "h3",
+          "cls": "",
+          "id": "",
+          "x": 1464,
+          "w": 113,
+          "right": 1577
+        },
+        {
+          "tag": "button",
+          "cls": "cart-sidebar-close",
+          "id": "cart-close",
+          "x": 1780,
+          "w": 36,
+          "right": 1816
+        },
+        {
+          "tag": "div",
+          "cls": "cart-sidebar-body",
+          "id": "cart-body",
+          "x": 1440,
+          "w": 400,
+          "right": 1840
+        },
+        {
+          "tag": "div",
+          "cls": "cart-empty",
+          "id": "",
+          "x": 1456,
+          "w": 368,
+          "right": 1824
+        },
+        {
+          "tag": "div",
+          "cls": "empty-icon",
+          "id": "",
+          "x": 1480,
+          "w": 320,
+          "right": 1800
+        },
+        {
+          "tag": "h4",
+          "cls": "",
+          "id": "",
+          "x": 1480,
+          "w": 320,
+          "right": 1800
+        },
+        {
+          "tag": "p",
+          "cls": "",
+          "id": "",
+          "x": 1480,
+          "w": 320,
+          "right": 1800
+        }
+      ],
+      "navToggleDisplay": "none"
+    },
+    "logs": []
+  },
+  {
+    "viewport": "desktop",
+    "page": "contact.html",
+    "metrics": {
+      "clientWidth": 1440,
+      "innerWidth": 1440,
+      "scrollWidth": 1440,
+      "bodyScrollWidth": 1440,
+      "visibleWide": [
+        {
+          "tag": "div",
+          "cls": "cart-sidebar-header",
+          "id": "",
+          "x": 1440,
+          "w": 400,
+          "right": 1840
+        },
+        {
+          "tag": "h3",
+          "cls": "",
+          "id": "",
+          "x": 1464,
+          "w": 113,
+          "right": 1577
+        },
+        {
+          "tag": "button",
+          "cls": "cart-sidebar-close",
+          "id": "cart-close",
+          "x": 1780,
+          "w": 36,
+          "right": 1816
+        },
+        {
+          "tag": "div",
+          "cls": "cart-sidebar-body",
+          "id": "cart-body",
+          "x": 1440,
+          "w": 400,
+          "right": 1840
+        },
+        {
+          "tag": "div",
+          "cls": "cart-empty",
+          "id": "",
+          "x": 1456,
+          "w": 368,
+          "right": 1824
+        },
+        {
+          "tag": "div",
+          "cls": "empty-icon",
+          "id": "",
+          "x": 1480,
+          "w": 320,
+          "right": 1800
+        },
+        {
+          "tag": "h4",
+          "cls": "",
+          "id": "",
+          "x": 1480,
+          "w": 320,
+          "right": 1800
+        },
+        {
+          "tag": "p",
+          "cls": "",
+          "id": "",
+          "x": 1480,
+          "w": 320,
+          "right": 1800
+        }
+      ],
+      "navToggleDisplay": "none"
+    },
+    "logs": []
+  },
+  {
+    "viewport": "tablet",
+    "page": "index.html",
+    "metrics": {
+      "clientWidth": 810,
+      "innerWidth": 1110,
+      "scrollWidth": 1110,
+      "bodyScrollWidth": 1110,
+      "visibleWide": [
+        {
+          "tag": "div",
+          "cls": "marquee-track",
+          "id": "",
+          "x": -124,
+          "w": 4304,
+          "right": 4180
+        },
+        {
+          "tag": "span",
+          "cls": "",
+          "id": "",
+          "x": -124,
+          "w": 351,
+          "right": 227
+        },
+        {
+          "tag": "span",
+          "cls": "",
+          "id": "",
+          "x": 617,
+          "w": 529,
+          "right": 1145
+        },
+        {
+          "tag": "span",
+          "cls": "",
+          "id": "",
+          "x": 1145,
+          "w": 407,
+          "right": 1552
+        },
+        {
+          "tag": "span",
+          "cls": "",
+          "id": "",
+          "x": 1552,
+          "w": 475,
+          "right": 2028
+        },
+        {
+          "tag": "span",
+          "cls": "",
+          "id": "",
+          "x": 2028,
+          "w": 351,
+          "right": 2379
+        },
+        {
+          "tag": "span",
+          "cls": "",
+          "id": "",
+          "x": 2379,
+          "w": 390,
+          "right": 2769
+        },
+        {
+          "tag": "span",
+          "cls": "",
+          "id": "",
+          "x": 2769,
+          "w": 529,
+          "right": 3298
+        },
+        {
+          "tag": "span",
+          "cls": "",
+          "id": "",
+          "x": 3298,
+          "w": 407,
+          "right": 3704
+        },
+        {
+          "tag": "span",
+          "cls": "",
+          "id": "",
+          "x": 3704,
+          "w": 475,
+          "right": 4180
+        }
+      ],
+      "navToggleDisplay": "flex"
+    },
+    "logs": []
+  },
+  {
+    "viewport": "tablet",
+    "page": "products.html",
+    "metrics": {
+      "clientWidth": 810,
+      "innerWidth": 1110,
+      "scrollWidth": 1110,
+      "bodyScrollWidth": 1110,
+      "visibleWide": [
+        {
+          "tag": "a",
+          "cls": "",
+          "id": "",
+          "x": 834,
+          "w": 252,
+          "right": 1086
+        },
+        {
+          "tag": "a",
+          "cls": "",
+          "id": "",
+          "x": 834,
+          "w": 252,
+          "right": 1086
+        },
+        {
+          "tag": "div",
+          "cls": "nav-dropdown",
+          "id": "",
+          "x": 834,
+          "w": 113,
+          "right": 947
+        },
+        {
+          "tag": "a",
+          "cls": "active",
+          "id": "",
+          "x": 834,
+          "w": 113,
+          "right": 947
+        },
+        {
+          "tag": "a",
+          "cls": "",
+          "id": "",
+          "x": 834,
+          "w": 252,
+          "right": 1086
+        },
+        {
+          "tag": "a",
+          "cls": "",
+          "id": "",
+          "x": 834,
+          "w": 252,
+          "right": 1086
+        },
+        {
+          "tag": "a",
+          "cls": "",
+          "id": "",
+          "x": 834,
+          "w": 252,
+          "right": 1086
+        },
+        {
+          "tag": "div",
+          "cls": "cart-sidebar-header",
+          "id": "",
+          "x": 1110,
+          "w": 400,
+          "right": 1510
+        },
+        {
+          "tag": "h3",
+          "cls": "",
+          "id": "",
+          "x": 1134,
+          "w": 113,
+          "right": 1247
+        },
+        {
+          "tag": "button",
+          "cls": "cart-sidebar-close",
+          "id": "cart-close",
+          "x": 1450,
+          "w": 36,
+          "right": 1486
+        }
+      ],
+      "navToggleDisplay": "flex"
+    },
+    "logs": []
+  },
+  {
+    "viewport": "tablet",
+    "page": "order-online.html",
+    "metrics": {
+      "clientWidth": 810,
+      "innerWidth": 1110,
+      "scrollWidth": 1110,
+      "bodyScrollWidth": 1110,
+      "visibleWide": [
+        {
+          "tag": "a",
+          "cls": "",
+          "id": "",
+          "x": 834,
+          "w": 252,
+          "right": 1086
+        },
+        {
+          "tag": "a",
+          "cls": "",
+          "id": "",
+          "x": 834,
+          "w": 252,
+          "right": 1086
+        },
+        {
+          "tag": "div",
+          "cls": "nav-dropdown",
+          "id": "",
+          "x": 834,
+          "w": 112,
+          "right": 946
+        },
+        {
+          "tag": "a",
+          "cls": "",
+          "id": "",
+          "x": 834,
+          "w": 112,
+          "right": 946
+        },
+        {
+          "tag": "a",
+          "cls": "",
+          "id": "",
+          "x": 834,
+          "w": 252,
+          "right": 1086
+        },
+        {
+          "tag": "a",
+          "cls": "active",
+          "id": "",
+          "x": 834,
+          "w": 252,
+          "right": 1086
+        },
+        {
+          "tag": "a",
+          "cls": "",
+          "id": "",
+          "x": 834,
+          "w": 252,
+          "right": 1086
+        },
+        {
+          "tag": "div",
+          "cls": "cart-sidebar-header",
+          "id": "",
+          "x": 1113,
+          "w": 400,
+          "right": 1513
+        },
+        {
+          "tag": "h3",
+          "cls": "",
+          "id": "",
+          "x": 1137,
+          "w": 113,
+          "right": 1250
+        },
+        {
+          "tag": "button",
+          "cls": "cart-sidebar-close",
+          "id": "cart-close",
+          "x": 1453,
+          "w": 36,
+          "right": 1489
+        }
+      ],
+      "navToggleDisplay": "flex"
+    },
+    "logs": []
+  },
+  {
+    "viewport": "tablet",
+    "page": "contact.html",
+    "metrics": {
+      "clientWidth": 810,
+      "innerWidth": 1110,
+      "scrollWidth": 1110,
+      "bodyScrollWidth": 1110,
+      "visibleWide": [
+        {
+          "tag": "a",
+          "cls": "",
+          "id": "",
+          "x": 834,
+          "w": 252,
+          "right": 1086
+        },
+        {
+          "tag": "a",
+          "cls": "",
+          "id": "",
+          "x": 834,
+          "w": 252,
+          "right": 1086
+        },
+        {
+          "tag": "div",
+          "cls": "nav-dropdown",
+          "id": "",
+          "x": 834,
+          "w": 112,
+          "right": 946
+        },
+        {
+          "tag": "a",
+          "cls": "",
+          "id": "",
+          "x": 834,
+          "w": 112,
+          "right": 946
+        },
+        {
+          "tag": "a",
+          "cls": "",
+          "id": "",
+          "x": 834,
+          "w": 252,
+          "right": 1086
+        },
+        {
+          "tag": "a",
+          "cls": "",
+          "id": "",
+          "x": 834,
+          "w": 252,
+          "right": 1086
+        },
+        {
+          "tag": "a",
+          "cls": "active",
+          "id": "",
+          "x": 834,
+          "w": 252,
+          "right": 1086
+        },
+        {
+          "tag": "div",
+          "cls": "cart-sidebar-header",
+          "id": "",
+          "x": 1110,
+          "w": 400,
+          "right": 1510
+        },
+        {
+          "tag": "h3",
+          "cls": "",
+          "id": "",
+          "x": 1134,
+          "w": 113,
+          "right": 1247
+        },
+        {
+          "tag": "button",
+          "cls": "cart-sidebar-close",
+          "id": "cart-close",
+          "x": 1450,
+          "w": 36,
+          "right": 1486
+        }
+      ],
+      "navToggleDisplay": "flex"
+    },
+    "logs": []
+  },
+  {
+    "viewport": "mobile",
+    "page": "index.html",
+    "metrics": {
+      "clientWidth": 390,
+      "innerWidth": 690,
+      "scrollWidth": 690,
+      "bodyScrollWidth": 690,
+      "visibleWide": [
+        {
+          "tag": "div",
+          "cls": "marquee-track",
+          "id": "",
+          "x": -82,
+          "w": 4304,
+          "right": 4222
+        },
+        {
+          "tag": "span",
+          "cls": "",
+          "id": "",
+          "x": -82,
+          "w": 351,
+          "right": 269
+        },
+        {
+          "tag": "span",
+          "cls": "",
+          "id": "",
+          "x": 269,
+          "w": 390,
+          "right": 659
+        },
+        {
+          "tag": "span",
+          "cls": "",
+          "id": "",
+          "x": 659,
+          "w": 529,
+          "right": 1187
+        },
+        {
+          "tag": "span",
+          "cls": "",
+          "id": "",
+          "x": 1187,
+          "w": 407,
+          "right": 1594
+        },
+        {
+          "tag": "span",
+          "cls": "",
+          "id": "",
+          "x": 1594,
+          "w": 475,
+          "right": 2070
+        },
+        {
+          "tag": "span",
+          "cls": "",
+          "id": "",
+          "x": 2070,
+          "w": 351,
+          "right": 2421
+        },
+        {
+          "tag": "span",
+          "cls": "",
+          "id": "",
+          "x": 2421,
+          "w": 390,
+          "right": 2811
+        },
+        {
+          "tag": "span",
+          "cls": "",
+          "id": "",
+          "x": 2811,
+          "w": 529,
+          "right": 3339
+        },
+        {
+          "tag": "span",
+          "cls": "",
+          "id": "",
+          "x": 3339,
+          "w": 407,
+          "right": 3746
+        }
+      ],
+      "navToggleDisplay": "flex"
+    },
+    "logs": []
+  },
+  {
+    "viewport": "mobile",
+    "page": "products.html",
+    "metrics": {
+      "clientWidth": 390,
+      "innerWidth": 690,
+      "scrollWidth": 690,
+      "bodyScrollWidth": 690,
+      "visibleWide": [
+        {
+          "tag": "a",
+          "cls": "",
+          "id": "",
+          "x": 414,
+          "w": 252,
+          "right": 666
+        },
+        {
+          "tag": "a",
+          "cls": "",
+          "id": "",
+          "x": 414,
+          "w": 252,
+          "right": 666
+        },
+        {
+          "tag": "div",
+          "cls": "nav-dropdown",
+          "id": "",
+          "x": 414,
+          "w": 113,
+          "right": 527
+        },
+        {
+          "tag": "a",
+          "cls": "active",
+          "id": "",
+          "x": 414,
+          "w": 113,
+          "right": 527
+        },
+        {
+          "tag": "a",
+          "cls": "",
+          "id": "",
+          "x": 414,
+          "w": 252,
+          "right": 666
+        },
+        {
+          "tag": "a",
+          "cls": "",
+          "id": "",
+          "x": 414,
+          "w": 252,
+          "right": 666
+        },
+        {
+          "tag": "a",
+          "cls": "",
+          "id": "",
+          "x": 414,
+          "w": 252,
+          "right": 666
+        },
+        {
+          "tag": "div",
+          "cls": "cart-sidebar-header",
+          "id": "",
+          "x": 690,
+          "w": 690,
+          "right": 1380
+        },
+        {
+          "tag": "h3",
+          "cls": "",
+          "id": "",
+          "x": 714,
+          "w": 113,
+          "right": 827
+        },
+        {
+          "tag": "button",
+          "cls": "cart-sidebar-close",
+          "id": "cart-close",
+          "x": 1320,
+          "w": 36,
+          "right": 1356
+        }
+      ],
+      "navToggleDisplay": "flex"
+    },
+    "logs": []
+  },
+  {
+    "viewport": "mobile",
+    "page": "order-online.html",
+    "metrics": {
+      "clientWidth": 390,
+      "innerWidth": 690,
+      "scrollWidth": 690,
+      "bodyScrollWidth": 690,
+      "visibleWide": [
+        {
+          "tag": "a",
+          "cls": "",
+          "id": "",
+          "x": 414,
+          "w": 252,
+          "right": 666
+        },
+        {
+          "tag": "a",
+          "cls": "",
+          "id": "",
+          "x": 414,
+          "w": 252,
+          "right": 666
+        },
+        {
+          "tag": "div",
+          "cls": "nav-dropdown",
+          "id": "",
+          "x": 414,
+          "w": 112,
+          "right": 526
+        },
+        {
+          "tag": "a",
+          "cls": "",
+          "id": "",
+          "x": 414,
+          "w": 112,
+          "right": 526
+        },
+        {
+          "tag": "a",
+          "cls": "",
+          "id": "",
+          "x": 414,
+          "w": 252,
+          "right": 666
+        },
+        {
+          "tag": "a",
+          "cls": "active",
+          "id": "",
+          "x": 414,
+          "w": 252,
+          "right": 666
+        },
+        {
+          "tag": "a",
+          "cls": "",
+          "id": "",
+          "x": 414,
+          "w": 252,
+          "right": 666
+        },
+        {
+          "tag": "div",
+          "cls": "cart-sidebar-header",
+          "id": "",
+          "x": 697,
+          "w": 697,
+          "right": 1394
+        },
+        {
+          "tag": "h3",
+          "cls": "",
+          "id": "",
+          "x": 721,
+          "w": 113,
+          "right": 834
+        },
+        {
+          "tag": "button",
+          "cls": "cart-sidebar-close",
+          "id": "cart-close",
+          "x": 1334,
+          "w": 36,
+          "right": 1370
+        }
+      ],
+      "navToggleDisplay": "flex"
+    },
+    "logs": []
+  },
+  {
+    "viewport": "mobile",
+    "page": "contact.html",
+    "metrics": {
+      "clientWidth": 390,
+      "innerWidth": 690,
+      "scrollWidth": 690,
+      "bodyScrollWidth": 690,
+      "visibleWide": [
+        {
+          "tag": "a",
+          "cls": "",
+          "id": "",
+          "x": 414,
+          "w": 252,
+          "right": 666
+        },
+        {
+          "tag": "a",
+          "cls": "",
+          "id": "",
+          "x": 414,
+          "w": 252,
+          "right": 666
+        },
+        {
+          "tag": "div",
+          "cls": "nav-dropdown",
+          "id": "",
+          "x": 414,
+          "w": 112,
+          "right": 526
+        },
+        {
+          "tag": "a",
+          "cls": "",
+          "id": "",
+          "x": 414,
+          "w": 112,
+          "right": 526
+        },
+        {
+          "tag": "a",
+          "cls": "",
+          "id": "",
+          "x": 414,
+          "w": 252,
+          "right": 666
+        },
+        {
+          "tag": "a",
+          "cls": "",
+          "id": "",
+          "x": 414,
+          "w": 252,
+          "right": 666
+        },
+        {
+          "tag": "a",
+          "cls": "active",
+          "id": "",
+          "x": 414,
+          "w": 252,
+          "right": 666
+        },
+        {
+          "tag": "div",
+          "cls": "cart-sidebar-header",
+          "id": "",
+          "x": 697,
+          "w": 697,
+          "right": 1394
+        },
+        {
+          "tag": "h3",
+          "cls": "",
+          "id": "",
+          "x": 721,
+          "w": 113,
+          "right": 834
+        },
+        {
+          "tag": "button",
+          "cls": "cart-sidebar-close",
+          "id": "cart-close",
+          "x": 1334,
+          "w": 36,
+          "right": 1370
+        }
+      ],
+      "navToggleDisplay": "flex"
+    },
+    "logs": []
+  },
+  {
+    "viewport": "mobile",
+    "page": "checkout",
+    "metrics": {
+      "clientWidth": 390,
+      "innerWidth": 690,
+      "scrollWidth": 690,
+      "modal": {
+        "x": 8,
+        "w": 374,
+        "right": 382,
+        "bottom": 656
+      },
+      "footer": {
+        "y": 582,
+        "bottom": 655
+      }
+    },
+    "logs": []
+  }
+]

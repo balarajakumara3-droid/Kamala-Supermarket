@@ -233,7 +233,8 @@
   object-fit: contain !important;
   vertical-align: middle;
   transition: transform var(--transition-fast) ease;
-  pointer-events: none; /* ensures clicks go through to the button */
+  pointer-events: none;
+  /* ensures clicks go through to the button */
 }
 
 .nav-search-btn:hover .nav-icon-img,
@@ -249,7 +250,8 @@
   margin-right: 6px !important;
   flex-shrink: 0 !important;
   object-fit: contain !important;
-  filter: brightness(0) invert(1) !important; /* White WhatsApp icon inside green nav CTA */
+  filter: brightness(0) invert(1) !important;
+  /* White WhatsApp icon inside green nav CTA */
 }
 
 /* Button & Action Icon Styles */
@@ -262,7 +264,8 @@
   object-fit: contain !important;
   vertical-align: middle;
   margin-right: 8px !important;
-  filter: brightness(0) invert(1) !important; /* Pure white WhatsApp icon inside green action buttons */
+  filter: brightness(0) invert(1) !important;
+  /* Pure white WhatsApp icon inside green action buttons */
   pointer-events: none;
 }
 
@@ -275,7 +278,8 @@
   flex-shrink: 0 !important;
   object-fit: contain !important;
   vertical-align: middle;
-  filter: brightness(0) invert(1) !important; /* Pure white icon inside floating green button */
+  filter: brightness(0) invert(1) !important;
+  /* Pure white icon inside floating green button */
   pointer-events: none;
 }
 
@@ -288,13 +292,15 @@
   flex-shrink: 0 !important;
   object-fit: contain !important;
   vertical-align: middle;
-  filter: grayscale(1) brightness(0.8) !important; /* Elegant gray WhatsApp icon to match other social links */
+  filter: grayscale(1) brightness(0.8) !important;
+  /* Elegant gray WhatsApp icon to match other social links */
   transition: all var(--transition-fast) ease;
   pointer-events: none;
 }
 
 .footer-social a:hover .footer-social-wa-img {
-  filter: brightness(0) invert(1) !important; /* Pop to white on hover */
+  filter: brightness(0) invert(1) !important;
+  /* Pop to white on hover */
 }
 
 /* Search Modal Input Icon */
@@ -323,9 +329,11 @@
   max-height: 14px !important;
   flex-shrink: 0 !important;
   object-fit: contain !important;
-  filter: brightness(0) invert(1) !important; /* Pure white inside green/primary small buttons */
+  filter: brightness(0) invert(1) !important;
+  /* Pure white inside green/primary small buttons */
   pointer-events: none;
-  margin-right: 4px !important; /* Tight, premium spacing */
+  margin-right: 4px !important;
+  /* Tight, premium spacing */
 }
 
 .btn-wa-card-icon-img {
@@ -335,9 +343,11 @@
   max-height: 14px !important;
   flex-shrink: 0 !important;
   object-fit: contain !important;
-  filter: brightness(0) invert(1) !important; /* Pure white inside green/whatsapp small buttons */
+  filter: brightness(0) invert(1) !important;
+  /* Pure white inside green/whatsapp small buttons */
   pointer-events: none;
-  margin-right: 4px !important; /* Tight, premium spacing */
+  margin-right: 4px !important;
+  /* Tight, premium spacing */
 }
 
 /* Card Button Overlay Icons */
@@ -349,14 +359,16 @@
   max-height: 20px !important;
   flex-shrink: 0 !important;
   object-fit: contain !important;
-  filter: invert(32%) sepia(21%) saturate(1210%) hue-rotate(107deg) brightness(95%) contrast(85%) !important; /* Kamala primary green */
+  filter: invert(32%) sepia(21%) saturate(1210%) hue-rotate(107deg) brightness(95%) contrast(85%) !important;
+  /* Kamala primary green */
   transition: all var(--transition-fast) ease;
   pointer-events: none;
 }
 
 .product-actions-overlay button:hover .btn-card-overlay-icon-img,
 .product-actions-overlay button:hover .btn-wa-card-overlay-icon-img {
-  filter: brightness(0) invert(1) !important; /* Turn pure white on hover */
+  filter: brightness(0) invert(1) !important;
+  /* Turn pure white on hover */
 }
 
 
@@ -672,7 +684,8 @@
   overflow: hidden;
   background: var(--color-gray-50);
   position: relative;
-  min-height: 180px; /* Protect against image collapses */
+  min-height: 180px;
+  /* Protect against image collapses */
 }
 
 .product-card .product-image img {
@@ -787,20 +800,25 @@
 
 .product-card .product-buttons {
   display: flex;
-  gap: var(--space-2); /* Clean spacing gap */
+  gap: var(--space-2);
+  /* Clean spacing gap */
   margin-top: auto;
-  margin-bottom: var(--space-2); /* Uncollapsible bottom margin guard */
-  flex-wrap: wrap; /* Safe wrapping for narrow cards */
+  margin-bottom: var(--space-2);
+  /* Uncollapsible bottom margin guard */
+  flex-wrap: wrap;
+  /* Safe wrapping for narrow cards */
 }
 
 .product-card .product-buttons .btn {
-  flex: 1 1 100px; /* Grow, shrink, and wrap elegantly if card is too narrow */
+  flex: 1 1 100px;
+  /* Grow, shrink, and wrap elegantly if card is too narrow */
   display: flex;
   align-items: center;
   justify-content: center;
   height: 38px;
   font-size: var(--text-xs);
-  padding: 0 var(--space-2); /* Symmetrical padding using design token spacing variables */
+  padding: 0 var(--space-2);
+  /* Symmetrical padding using design token spacing variables */
 }
 
 /* ============================================
@@ -1814,7 +1832,9 @@
     display: none;
   }
 
-  .top-bar { display: none; }
+  .top-bar {
+    display: none;
+  }
 }
 
 @media (max-width: 768px) {
@@ -1993,7 +2013,8 @@
   margin-bottom: var(--space-1);
 }
 
-.checkout-input, .checkout-select {
+.checkout-input,
+.checkout-select {
   width: 100%;
   padding: var(--space-3) var(--space-4);
   border-radius: var(--radius-lg);
@@ -2003,7 +2024,8 @@
   transition: border var(--transition-fast), box-shadow var(--transition-fast);
 }
 
-.checkout-input:focus, .checkout-select:focus {
+.checkout-input:focus,
+.checkout-select:focus {
   border-color: var(--color-primary);
   box-shadow: 0 0 0 3px rgba(45, 106, 79, 0.15);
   outline: none;
@@ -2181,7 +2203,7 @@
   content: '';
   position: absolute;
   inset: 5px;
-  border: 1px solid rgba(0,0,0,0.15);
+  border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 2px;
 }
 
@@ -2198,7 +2220,7 @@
   letter-spacing: 2px;
   word-spacing: 4px;
   margin: var(--space-3) 0;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
   text-align: center;
 }
 
@@ -2411,33 +2433,95 @@
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(8px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes slideUp {
-  from { opacity: 0; transform: translateY(12px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes icon-line-tip {
-  0% { width: 0; left: 1px; top: 19px; }
-  54% { width: 0; left: 1px; top: 19px; }
-  70% { width: 50px; left: -8px; top: 37px; }
-  84% { width: 17px; left: 21px; top: 48px; }
-  100% { width: 25px; left: 14px; top: 43px; }
+  0% {
+    width: 0;
+    left: 1px;
+    top: 19px;
+  }
+
+  54% {
+    width: 0;
+    left: 1px;
+    top: 19px;
+  }
+
+  70% {
+    width: 50px;
+    left: -8px;
+    top: 37px;
+  }
+
+  84% {
+    width: 17px;
+    left: 21px;
+    top: 48px;
+  }
+
+  100% {
+    width: 25px;
+    left: 14px;
+    top: 43px;
+  }
 }
 
 @keyframes icon-line-long {
-  0% { width: 0; right: 46px; top: 54px; }
-  65% { width: 0; right: 46px; top: 54px; }
-  84% { width: 55px; right: 0px; top: 35px; }
-  100% { width: 47px; right: 8px; top: 38px; }
+  0% {
+    width: 0;
+    right: 46px;
+    top: 54px;
+  }
+
+  65% {
+    width: 0;
+    right: 46px;
+    top: 54px;
+  }
+
+  84% {
+    width: 55px;
+    right: 0px;
+    top: 35px;
+  }
+
+  100% {
+    width: 47px;
+    right: 8px;
+    top: 38px;
+  }
 }
 
 /* ============================================
@@ -2608,3 +2692,137 @@
   box-shadow: 0 0 0 3px rgba(45, 106, 79, 0.2);
 }
 
+/* Checkout must stay tappable and scrollable on small screens. */
+.checkout-modal,
+.checkout-header,
+.checkout-steps,
+.checkout-footer {
+  flex-shrink: 0;
+}
+
+.checkout-body {
+  min-height: 0;
+}
+
+@media (max-width: 640px) {
+  .checkout-overlay {
+    align-items: stretch;
+    padding: var(--space-2);
+  }
+
+  .checkout-modal {
+    max-height: calc(100dvh - var(--space-4));
+    border-radius: var(--radius-xl);
+  }
+
+  .checkout-header {
+    padding: var(--space-4);
+  }
+
+  .checkout-header h3 {
+    font-size: var(--text-lg);
+  }
+
+  .checkout-steps {
+    flex-shrink: 0;
+  }
+
+  .checkout-body {
+    padding: var(--space-4);
+    overscroll-behavior: contain;
+  }
+
+  .payment-tabs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-2);
+  }
+
+  .payment-tab-btn {
+    min-height: 76px;
+    padding: var(--space-3) var(--space-2);
+  }
+
+  .payment-tab-btn .tab-label {
+    line-height: 1.25;
+    text-align: center;
+  }
+
+  .payment-details-panel {
+    padding: var(--space-4);
+  }
+
+  .credit-card-box {
+    width: min(100%, 300px);
+    height: 178px;
+  }
+
+  .card-number-display {
+    font-size: 1rem;
+    letter-spacing: 1px;
+    word-spacing: 2px;
+  }
+
+  .upi-apps,
+  .rzp-methods-row {
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .checkout-footer {
+    align-items: stretch;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-4);
+  }
+
+  .checkout-actions-row {
+    flex: 1;
+    justify-content: flex-end;
+  }
+
+  .checkout-actions-row .btn {
+    min-height: 44px;
+  }
+}
+
+@media (max-width: 380px) {
+  .checkout-footer {
+    flex-direction: column;
+  }
+
+  .checkout-actions-row {
+    width: 100%;
+  }
+
+  .checkout-actions-row .btn {
+    flex: 1;
+  }
+}
+
+@media (max-device-width: 640px) {
+  .nav-menu:not(.active),
+  .cart-sidebar:not(.active) {
+    display: none;
+  }
+
+  .nav-menu.active {
+    display: flex;
+    inline-size: min(300px, calc(100svw - var(--space-6)));
+  }
+
+  .cart-sidebar.active {
+    display: flex;
+    inline-size: 100svw;
+    max-inline-size: 100svw;
+  }
+
+  .checkout-overlay {
+    inline-size: 100svw;
+    max-inline-size: 100svw;
+    overflow: hidden;
+  }
+
+  .checkout-modal {
+    inline-size: calc(100svw - var(--space-4));
+    max-inline-size: calc(100svw - var(--space-4));
+  }
+}

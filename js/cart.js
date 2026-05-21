@@ -221,6 +221,8 @@ const Checkout = {
   deliveryFee: 0,
   activeStep: 1,
   selectedPayment: 'cod',
+  merchantUpiId: 'kamalasupermarket@okaxis',
+  merchantName: 'Kamala Supermarket',
 
   injectModal() {
     if (document.getElementById('checkout-overlay')) return;
@@ -307,11 +309,11 @@ const Checkout = {
               </button>
               <button class="payment-tab-btn" id="pay-tab-card" onclick="Checkout.selectPayment('card')">
                 <span class="tab-icon">💳</span>
-                <span class="tab-label">Credit/Debit Card</span>
+                <span class="tab-label">Card / Net Banking</span>
               </button>
               <button class="payment-tab-btn razorpay-tab-btn" id="pay-tab-razorpay" onclick="Checkout.selectPayment('razorpay')">
                 <span class="tab-icon">🔶</span>
-                <span class="tab-label">Razorpay</span>
+                <span class="tab-label">All Gateway Options</span>
               </button>
             </div>
             
@@ -335,7 +337,7 @@ const Checkout = {
                 
                 <!-- UPI Merchant Copy ID tool -->
                 <div class="upi-copy-box" style="margin-top: 12px; display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; width: 100%;">
-                  <span class="upi-id-text" style="font-size: 11px; font-weight: 600; color: var(--color-gray-600); background: var(--color-gray-100); padding: 4px 8px; border-radius: 4px; border: 1px dashed var(--color-gray-300);">kamalasupermarket@okaxis</span>
+                  <span class="upi-id-text" style="font-size: 11px; font-weight: 600; color: var(--color-gray-600); background: var(--color-gray-100); padding: 4px 8px; border-radius: 4px; border: 1px dashed var(--color-gray-300);">${this.merchantUpiId}</span>
                   <button class="btn btn-ghost btn-xs upi-copy-btn" id="upi-copy-button" onclick="Checkout.copyUPI()" style="padding: 4px 8px; font-size: 11px;">📋 Copy ID</button>
                 </div>
                 
@@ -387,29 +389,17 @@ const Checkout = {
                   </div>
                 </div>
               </div>
+              <div class="invoice-warning" style="margin-bottom: var(--space-4);">
+                Card, net banking, wallet, EMI, and Pay Later payments are handled through the secure Razorpay gateway. We do not collect or store card numbers on this website.
+              </div>
               
-              <!-- Card Inputs -->
-              <div class="checkout-form-group">
-                <label for="card-holder-input">Cardholder Name</label>
-                <input type="text" id="card-holder-input" class="checkout-input" placeholder="Name on Card" oninput="Checkout.syncCardField('holder', this.value)">
-              </div>
-              <div class="checkout-form-group" style="position: relative;">
-                <label for="card-number-input">Card Number</label>
-                <div style="position: relative; display: flex; align-items: center;">
-                  <input type="text" id="card-number-input" class="checkout-input" placeholder="4000 1234 5678 9010" maxlength="19" oninput="Checkout.syncCardField('number', this.value)" style="padding-right: 75px;">
-                  <span id="input-card-brand" class="input-card-brand brand-rupay" style="position: absolute; right: 10px; font-size: 9px; font-weight: 800; padding: 3px 6px; border-radius: 4px; background: var(--color-gray-100); color: var(--color-gray-500); pointer-events: none; transition: all 0.2s;">RUPAY</span>
-                </div>
-              </div>
-              <div class="grid grid-2 gap-4" style="display:grid; grid-template-columns: 1fr 1fr; gap: 12px;">
-                <div class="checkout-form-group">
-                  <label for="card-expiry-input">Expiry Date</label>
-                  <input type="text" id="card-expiry-input" class="checkout-input" placeholder="MM/YY" maxlength="5" oninput="Checkout.syncCardField('expiry', this.value)">
-                </div>
-                <div class="checkout-form-group">
-                  <label for="card-cvv-input">CVV</label>
-                  <input type="password" id="card-cvv-input" class="checkout-input" placeholder="123" maxlength="4" 
-                         onfocus="Checkout.flipCard(true)" onblur="Checkout.flipCard(false)" oninput="Checkout.syncCardField('cvv', this.value)">
-                </div>
+              <div class="rzp-methods-row">
+                <span class="rzp-method-badge">💳 Credit Card</span>
+                <span class="rzp-method-badge">💳 Debit Card</span>
+                <span class="rzp-method-badge">🏦 Net Banking</span>
+                <span class="rzp-method-badge">👛 Wallets</span>
+                <span class="rzp-method-badge">📆 EMI</span>
+                <span class="rzp-method-badge">🧾 Pay Later</span>
               </div>
             </div>
 
@@ -428,9 +418,12 @@ const Checkout = {
                   <span class="rzp-method-badge">⚡ UPI</span>
                   <span class="rzp-method-badge">🏦 Net Banking</span>
                   <span class="rzp-method-badge">👛 Wallets</span>
+                  <span class="rzp-method-badge">📆 EMI</span>
+                  <span class="rzp-method-badge">🧾 Pay Later</span>
+                  <span class="rzp-method-badge">🏷️ Offers</span>
                 </div>
                 <p class="rzp-desc">
-                  🔒 Click <strong>"Pay via Razorpay"</strong> below. A secure Razorpay popup will open where you can pay using any method. Your payment is 100% encrypted and safe.
+                  🔒 Choose this option for A to Z payment gateway methods. Your order alert will be sent to ${window.KS.CONFIG.phone}; collect payment through your connected Razorpay account before dispatch.
                 </p>
                 <div class="rzp-trust-row">
                   <span>✅ PCI-DSS Compliant</span>
@@ -582,7 +575,7 @@ const Checkout = {
   },
 
   copyUPI() {
-    const upiId = 'kamalasupermarket@okaxis';
+    const upiId = this.merchantUpiId;
     const successHandler = () => {
       const btn = document.getElementById('upi-copy-button');
       if (btn) {
@@ -647,7 +640,7 @@ const Checkout = {
       nextBtn.textContent = 'Next: Payment';
     } else {
       backBtn.style.display = 'block';
-      nextBtn.textContent = this.selectedPayment === 'cod' ? 'Complete Order' : 'Pay Now & Complete';
+      nextBtn.textContent = 'Send Order Alert';
       if (this.selectedPayment === 'upi') {
         this.generateUPIQR();
       }
@@ -687,64 +680,6 @@ const Checkout = {
       this.showStep(2);
     } else {
       // Step 2 Checkout Placing
-      if (this.selectedPayment === 'card') {
-        const holder = document.getElementById('card-holder-input').value.trim();
-        const num = document.getElementById('card-number-input').value.replace(/\s/g, '');
-        const expiry = document.getElementById('card-expiry-input').value.trim();
-        const cvv = document.getElementById('card-cvv-input').value.trim();
-
-        if (!holder || !num || !expiry || !cvv) {
-          window.KS.showToast('Please complete the Credit Card details!', 'error');
-          return;
-        }
-
-        if (num.length < 15) {
-          window.KS.showToast('Please enter a valid card number!', 'error');
-          return;
-        }
-
-        // Luhn Check for secure simulated validator
-        let sum = 0;
-        let shouldDouble = false;
-        for (let i = num.length - 1; i >= 0; i--) {
-          let digit = parseInt(num.charAt(i));
-          if (shouldDouble) {
-            if ((digit *= 2) > 9) digit -= 9;
-          }
-          sum += digit;
-          shouldDouble = !shouldDouble;
-        }
-        const isLuhnValid = (sum % 10) === 0;
-        if (!isLuhnValid) {
-          window.KS.showToast('Invalid card number pattern. Please check your digits!', 'error');
-          return;
-        }
-
-        // Expiry validation MM/YY
-        const expMatch = expiry.match(/^(\d{2})\/(\d{2})$/);
-        if (!expMatch) {
-          window.KS.showToast('Expiry must be in MM/YY format!', 'error');
-          return;
-        }
-        const month = parseInt(expMatch[1], 10);
-        const year = parseInt('20' + expMatch[2], 10);
-        if (month < 1 || month > 12) {
-          window.KS.showToast('Expiry month must be between 01 and 12!', 'error');
-          return;
-        }
-        const now = new Date();
-        const expDate = new Date(year, month - 1, 28);
-        if (expDate < now) {
-          window.KS.showToast('The card has expired!', 'error');
-          return;
-        }
-
-        if (cvv.length < 3) {
-          window.KS.showToast('CVV must be 3 or 4 digits!', 'error');
-          return;
-        }
-      }
-
       this.processPaymentAndSubmit();
     }
   },
@@ -756,15 +691,17 @@ const Checkout = {
     document.getElementById('pay-tab-cod').classList.toggle('active', method === 'cod');
     document.getElementById('pay-tab-upi').classList.toggle('active', method === 'upi');
     document.getElementById('pay-tab-card').classList.toggle('active', method === 'card');
+    document.getElementById('pay-tab-razorpay').classList.toggle('active', method === 'razorpay');
 
     // Panels
     document.getElementById('pay-panel-cod').classList.toggle('active', method === 'cod');
     document.getElementById('pay-panel-upi').classList.toggle('active', method === 'upi');
     document.getElementById('pay-panel-card').classList.toggle('active', method === 'card');
+    document.getElementById('pay-panel-razorpay').classList.toggle('active', method === 'razorpay');
 
     // Actions button rename
     const nextBtn = document.getElementById('checkout-next-btn');
-    nextBtn.textContent = method === 'cod' ? 'Complete Order' : 'Pay Now & Complete';
+    nextBtn.textContent = 'Send Order Alert';
 
     if (method === 'upi') {
       this.generateUPIQR();
@@ -780,7 +717,7 @@ const Checkout = {
     amountVal.textContent = window.KS.formatPrice(payable);
 
     // Generate UPI URL
-    const upiUrl = `upi://pay?pa=kamalasupermarket@okaxis&pn=Kamala%20Supermarket&am=${payable}&cu=INR&tn=KamalaOrder`;
+    const upiUrl = `upi://pay?pa=${this.merchantUpiId}&pn=${encodeURIComponent(this.merchantName)}&am=${payable}&cu=INR&tn=KamalaOrder`;
     const qrApiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&margin=8&data=${encodeURIComponent(upiUrl)}`;
 
     wrapper.innerHTML = `<img src="${qrApiUrl}" alt="UPI Payment QR Code" onload="this.parentElement.style.border = '2px solid var(--color-success)'">`;
@@ -869,23 +806,23 @@ const Checkout = {
       title.textContent = 'Placing Order...';
       desc.textContent = 'Compiling receipt and connecting to WhatsApp.';
     } else {
-      title.textContent = 'Authorizing Payment...';
-      desc.textContent = 'Contacting secure gateway bank network.';
+      title.textContent = 'Preparing Payment Request...';
+      desc.textContent = 'Compiling order and selected payment method.';
     }
 
     // Simulate transaction progress
     setTimeout(() => {
       if (this.selectedPayment !== 'cod') {
-        title.textContent = 'Verifying Transaction...';
-        desc.textContent = 'Securing receipt metadata and payment tokens.';
+        title.textContent = 'Preparing Shop Notification...';
+        desc.textContent = 'Adding payment instructions to the WhatsApp alert.';
       }
 
       setTimeout(() => {
         // Show success animation
         spinner.style.display = 'none';
         checkmark.style.display = 'block';
-        title.textContent = 'Transaction Successful!';
-        desc.textContent = 'Connecting to WhatsApp to complete your order setup.';
+        title.textContent = 'Order Alert Ready!';
+        desc.textContent = `Opening WhatsApp so the order reaches ${window.KS.CONFIG.phone}.`;
 
         setTimeout(() => {
           this.submitReceiptAndWhatsApp();
@@ -924,19 +861,31 @@ const Checkout = {
 
     let methodLabel = '';
     let statusLabel = '';
+    let paymentInstruction = '';
     if (this.selectedPayment === 'cod') {
       methodLabel = 'Cash on Delivery (COD)';
-      statusLabel = 'Pending Payment on Delivery';
+      statusLabel = 'Payment pending - collect on delivery';
+      paymentInstruction = 'Collect cash or delivery-agent UPI payment before handover.';
     } else if (this.selectedPayment === 'upi') {
-      methodLabel = 'Instant UPI Scan';
-      statusLabel = 'PAID (UPI Instant Verify)';
+      methodLabel = `Instant UPI to ${this.merchantUpiId}`;
+      statusLabel = 'Awaiting shop verification';
+      paymentInstruction = 'Please verify the UPI credit in the merchant bank/UPI app before dispatch.';
+    } else if (this.selectedPayment === 'card') {
+      methodLabel = 'Card / Net Banking / Wallet via Gateway';
+      statusLabel = 'Gateway payment request needed';
+      paymentInstruction = 'Send a Razorpay/payment-gateway link or confirm gateway payment before dispatch.';
+    } else if (this.selectedPayment === 'razorpay') {
+      methodLabel = 'Razorpay - all gateway options';
+      statusLabel = 'Gateway payment request needed';
+      paymentInstruction = 'Use Razorpay for cards, UPI, net banking, wallets, EMI, Pay Later, and offers.';
     } else {
-      methodLabel = 'Credit/Debit Card';
-      statusLabel = 'PAID (Authorized Secure Pay)';
+      methodLabel = 'Payment Gateway';
+      statusLabel = 'Awaiting confirmation';
+      paymentInstruction = 'Confirm payment before dispatch.';
     }
 
-    const message = `Hi ${window.KS.CONFIG.storeName}! 🛒
-I've successfully placed a new checkout order! 🥳
+    const message = `New order notification for ${window.KS.CONFIG.storeName}! 🛒
+Please confirm this order on ${window.KS.CONFIG.phone}.
 
 ━━━━━━━━━━━━━━━━━━
 🆔 Order ID: *${randomOrderId}*
@@ -956,14 +905,14 @@ ${itemsList}
 💳 *Payment Information:*
 🏷️ Payment Method: *${methodLabel}*
 📌 Status: *${statusLabel}*
+✅ Shop Action: ${paymentInstruction}
 
 📍 *Delivery Address:*
 🏠 Address: ${address}
 🏙️ Area: ${areaText}
 🗺️ Landmark: ${landmark}
 
-Please confirm availability and delivery dispatch time!
-Thank you! 🙏`;
+Please confirm item availability, payment status, and delivery dispatch time.`;
 
     const link = window.KS.generateWhatsAppLink(message);
     window.open(link, '_blank');
