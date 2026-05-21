@@ -344,8 +344,15 @@
         </div>
       </div>
       <div class="hero-image">
-        <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=600&h=500&fit=crop" 
+        <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=600&h=500&fit=crop"
+             srcset="https://images.unsplash.com/photo-1542838132-92c53300491e?w=400&h=333&fit=crop 400w, https://images.unsplash.com/photo-1542838132-92c53300491e?w=600&h=500&fit=crop 600w, https://images.unsplash.com/photo-1542838132-92c53300491e?w=900&h=750&fit=crop 900w"
+             sizes="(max-width: 1024px) 0px, 42vw"
              alt="Fresh groceries at Kamala Supermarket" 
+             width="600"
+             height="500"
+             loading="eager"
+             fetchpriority="high"
+             decoding="async"
              class="hero-img-main">
         <div class="hero-float-card card-1">
           <div class="icon">🚚</div>
@@ -740,8 +747,7 @@
       "Loading your store...",
       "Getting fresh deals...",
       "Checking today's offers...",
-      "Almost ready...",
-      "Welcome! 🛒"
+      "Ready!"
     ];
     let msgIndex = 0;
     const msgEl = document.getElementById('loading-text');
@@ -754,18 +760,18 @@
         } else {
           clearInterval(msgInterval);
         }
-      }, 520);
-    }, 500);
+      }, 260);
+    }, 200);
 
     setTimeout(() => {
       const splashEl = document.getElementById('splash');
       if (splashEl) splashEl.classList.add('hide');
-    }, 2900);
+    }, 1200);
     
     setTimeout(() => {
       const splashEl = document.getElementById('splash');
       if (splashEl) splashEl.style.display = 'none';
-    }, 3600);
+    }, 1750);
   }
 </script>
 

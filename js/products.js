@@ -140,18 +140,37 @@ const Products = {
     return this.applyFilters();
   },
 
+  getOptimizedImageUrl(src, width = 400) {
+    if (!src || !src.includes('images.unsplash.com')) return src;
+    try {
+      const url = new URL(src);
+      url.searchParams.set('w', String(width));
+      url.searchParams.set('h', String(width));
+      url.searchParams.set('fit', 'crop');
+      url.searchParams.set('auto', 'format');
+      url.searchParams.set('q', width <= 300 ? '70' : '78');
+      return url.toString();
+    } catch {
+      return src;
+    }
+  },
+
   // Render a single product card HTML
   renderCard(product) {
     const discount = product.mrp > product.price
       ? Math.round(((product.mrp - product.price) / product.mrp) * 100)
       : 0;
+    const imageSrc = this.getOptimizedImageUrl(product.image, 400);
+    const imageSrcSmall = this.getOptimizedImageUrl(product.image, 260);
+    const imageSrcLarge = this.getOptimizedImageUrl(product.image, 520);
+    const stockLabel = product.stock ? 'In stock today' : 'Out of stock';
 
     return `
       <div class="product-card reveal" data-id="${product.id}" data-category="${product.category}">
         ${discount > 0 ? `<span class="product-badge">${discount}% OFF</span>` : ''}
         ${!product.stock ? '<span class="product-badge out-of-stock">Out of Stock</span>' : ''}
         <div class="product-image">
-          <img src="${product.image}" alt="${product.name}" loading="lazy" 
+          <img src="${imageSrc}" srcset="${imageSrcSmall} 260w, ${imageSrc} 400w, ${imageSrcLarge} 520w" sizes="(max-width: 480px) 92vw, (max-width: 1024px) 45vw, 260px" alt="${product.name}" loading="lazy" decoding="async" 
                onerror="this.src='https://placehold.co/400x400/f3f4f6/9ca3af?text=${encodeURIComponent(product.name)}'">
           <div class="product-actions-overlay">
             <button onclick="Cart.addItem(Products.getById('${product.id}'))" title="Add to Cart"><img src="images/cart.svg" alt="Add to Cart" class="btn-card-overlay-icon-img"></button>
@@ -161,7 +180,10 @@ const Products = {
         <div class="product-info">
           <div class="product-category">${product.subcategory || product.category}</div>
           <div class="product-name">${product.name}</div>
-          <div class="product-weight">${product.weight}</div>
+          <div class="product-meta-row">
+            <span class="product-weight">${product.weight}</span>
+            <span class="product-stock ${product.stock ? 'in-stock' : 'out-stock'}">${stockLabel}</span>
+          </div>
           <div class="product-pricing">
             <span class="product-price">${window.KS.formatPrice(product.price)}</span>
             ${discount > 0 ? `<span class="product-mrp">${window.KS.formatPrice(product.mrp)}</span>` : ''}

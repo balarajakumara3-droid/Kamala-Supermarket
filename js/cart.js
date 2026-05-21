@@ -793,6 +793,28 @@ const Checkout = {
     document.getElementById('credit-card-box').classList.toggle('flipped', isFlipped);
   },
 
+  saveOrderStatus(order) {
+    try {
+      const orders = JSON.parse(localStorage.getItem('kamala_order_history')) || [];
+      const orderRecord = {
+        ...order,
+        status: 'Order sent to shop',
+        statusSteps: [
+          { label: 'Order sent to shop', done: true },
+          { label: 'Shop confirmation pending', done: false },
+          { label: 'Payment verification pending', done: false },
+          { label: 'Delivery dispatch pending', done: false }
+        ],
+        updatedAt: new Date().toISOString()
+      };
+      const nextOrders = [orderRecord, ...orders.filter(item => item.id !== order.id)].slice(0, 10);
+      localStorage.setItem('kamala_last_order', JSON.stringify(orderRecord));
+      localStorage.setItem('kamala_order_history', JSON.stringify(nextOrders));
+    } catch (error) {
+      console.error('Unable to save order status', error);
+    }
+  },
+
   processPaymentAndSubmit() {
     const processing = document.getElementById('checkout-processing');
     const spinner = document.getElementById('processing-spinner');
@@ -913,6 +935,21 @@ ${itemsList}
 🗺️ Landmark: ${landmark}
 
 Please confirm item availability, payment status, and delivery dispatch time.`;
+
+    this.saveOrderStatus({
+      id: randomOrderId,
+      customerName: name,
+      customerPhone: phone,
+      area: areaText,
+      address,
+      landmark,
+      items: this.items,
+      subtotal,
+      deliveryFee: this.deliveryFee,
+      total,
+      paymentMethod: methodLabel,
+      paymentStatus: statusLabel
+    });
 
     const link = window.KS.generateWhatsAppLink(message);
     window.open(link, '_blank');

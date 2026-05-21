@@ -43,9 +43,21 @@
         <div class="order-step reveal reveal-delay-2">
           <div class="step-number">3</div>
           <div class="step-icon">🚚</div>
-          <h4>Step 3: Confirm & Cash on Delivery</h4>
-          <p>Our team will confirm stock availability and delivery time slot within minutes. Pay cash, UPI, or card on delivery once your fresh groceries arrive.</p>
+          <h4>Step 3: Confirm, Pay & Track</h4>
+          <p>Our team will confirm stock availability, payment status, and delivery time. Your latest order ID is saved on this device for quick follow-up.</p>
         </div>
+      </div>
+
+      <div class="order-status-panel reveal">
+        <div class="order-status-header">
+          <h3>Track Your Latest Order</h3>
+          <p>Enter your order ID or leave it blank to show the latest order saved on this device.</p>
+        </div>
+        <form class="order-status-form" id="order-status-form">
+          <input type="text" id="order-status-input" placeholder="Example: KS123456" autocomplete="off">
+          <button class="btn btn-primary" type="submit">Check Status</button>
+        </form>
+        <div id="order-status-result"></div>
       </div>
 
       <div style="max-width: var(--container-narrow); margin: 0 auto; background: var(--color-white); border-radius: var(--radius-xl); border: 1px solid var(--color-gray-100); padding: var(--space-8); margin-top: var(--space-12);" class="reveal">
@@ -66,8 +78,8 @@
             <ul style="display: flex; flex-direction: column; gap: var(--space-2); font-size: var(--text-sm); color: var(--color-gray-600);">
               <li>• Cash on Delivery (COD)</li>
               <li>• UPI Payment (GPay, PhonePe, Paytm)</li>
-              <li>• Card payment on delivery</li>
-              <li>• Safe and secure local payments</li>
+              <li>• Razorpay gateway request for cards, UPI, net banking, wallets, EMI, and Pay Later</li>
+              <li>• Shop verifies payment before dispatch</li>
             </ul>
           </div>
         </div>
@@ -82,7 +94,7 @@
   <footer class="footer"><div class="container"><div class="footer-grid"><div class="footer-brand"><img src="images/logo.png" alt="Kamala Supermarket" style="height: 48px; width: auto; margin-bottom: 1rem;"><p>Villupuram's most trusted supermarket.</p><div class="footer-social"><a href="#"><i class="bi bi-facebook"></i></a><a href="#"><i class="bi bi-instagram"></i></a><a href="#"><i class="bi bi-youtube"></i></a><a href="https://wa.me/918438659762" title="WhatsApp" class="footer-social-wa"><img src="images/whatsapp.svg" alt="WhatsApp" class="footer-social-wa-img"></a></div></div><div class="footer-column"><h4>Quick Links</h4><ul><li><a href="index.html">→ Home</a></li><li><a href="about.html">→ About</a></li><li><a href="products.html">→ Products</a></li><li><a href="offers.html">→ Offers</a></li><li><a href="contact.html">→ Contact</a></li></ul></div><div class="footer-column"><h4>Categories</h4><ul><li><a href="vegetables-fruits.html">→ Vegetables & Fruits</a></li><li><a href="dairy-eggs.html">→ Dairy & Eggs</a></li><li><a href="rice-dals-grains.html">→ Rice & Grains</a></li><li><a href="snacks-beverages.html">→ Snacks</a></li><li><a href="household-cleaning.html">→ Household</a></li></ul></div><div class="footer-column"><h4>Contact</h4><ul><li><a href="tel:+918438659762">📞 +91 84386 59762</a></li><li><a href="https://wa.me/918438659762" title="WhatsApp" class="footer-social-wa"><img src="images/whatsapp.svg" alt="WhatsApp" class="footer-social-wa-img"></a></li><li>📍 Main Road, Villupuram</li></ul></div></div><div class="footer-bottom"><span>© 2025 Kamala Supermarket.</span><span><a href="privacy-policy.html">Privacy</a> · Built by <a href="https://ideamanifest.com" target="_blank">IdeaManifest</a></span></div></div></footer>
   <div class="cart-overlay" id="cart-overlay"></div><div class="cart-sidebar" id="cart-sidebar"><div class="cart-sidebar-header"><h3>🛒 Your Cart</h3><button class="cart-sidebar-close" id="cart-close">✕</button></div><div class="cart-sidebar-body" id="cart-body"><div class="cart-empty"><div class="empty-icon">🛒</div><h4>Cart is empty</h4></div></div><div class="cart-sidebar-footer" id="cart-footer" style="display:none;"><div class="cart-total"><span class="cart-total-label">Total</span><span class="cart-total-price">₹0</span></div><button class="btn btn-whatsapp btn-lg" onclick="Cart.orderViaWhatsApp()" style="margin-bottom:8px;"><img src="images/whatsapp.svg" alt="WhatsApp" class="btn-wa-icon-img">Order via WhatsApp</button><button class="btn btn-ghost btn-sm" onclick="Cart.clear()" style="width:100%;color:var(--color-gray-400);">Clear</button></div></div>
   <div class="whatsapp-float"><a href="https://wa.me/918438659762" target="_blank" class="float-btn" title="Chat on WhatsApp"><img src="images/whatsapp.svg" alt="WhatsApp Help" class="float-btn-icon-img"></a></div><button class="back-to-top" id="back-to-top">↑</button>
-  <script src="js/main.js"></script><script src="js/whatsapp.js"></script><script src="js/cart.js"></script><script src="js/products.js"></script>
+  <script src="js/main.js"></script><script src="js/whatsapp.js"></script><script src="js/cart.js"></script><script src="js/products.js"></script><script src="js/order-status.js"></script>
   <script>document.addEventListener('DOMContentLoaded', async () => { await Products.loadProducts(); Products.initSearchModal(); });</script>
 </body>
 </html>

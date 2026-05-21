@@ -1,4 +1,4 @@
 node_modules/
+qa_*.png
+qa_report.json
 checkout_*.png
-.DS_Store
-*.log

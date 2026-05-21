@@ -769,7 +769,33 @@
 .product-card .product-weight {
   font-size: var(--text-xs);
   color: var(--color-gray-400);
+}
+
+.product-card .product-meta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
   margin-bottom: var(--space-2);
+}
+
+.product-card .product-stock {
+  font-size: 0.68rem;
+  font-weight: 700;
+  line-height: 1;
+  border-radius: var(--radius-full);
+  padding: 5px 8px;
+  white-space: nowrap;
+}
+
+.product-card .product-stock.in-stock {
+  color: var(--color-primary-dark);
+  background: var(--color-primary-bg);
+}
+
+.product-card .product-stock.out-stock {
+  color: var(--color-gray-600);
+  background: var(--color-gray-100);
 }
 
 .product-card .product-pricing {
@@ -2824,5 +2850,177 @@
   .checkout-modal {
     inline-size: calc(100svw - var(--space-4));
     max-inline-size: calc(100svw - var(--space-4));
+  }
+}
+
+/* ============================================
+   Order Status
+   ============================================ */
+.order-status-panel {
+  max-width: var(--container-narrow);
+  margin: var(--space-12) auto 0;
+  background: var(--color-white);
+  border: 1px solid var(--color-gray-100);
+  border-radius: var(--radius-xl);
+  padding: var(--space-8);
+  box-shadow: var(--shadow-sm);
+}
+
+.order-status-header {
+  text-align: center;
+  margin-bottom: var(--space-6);
+}
+
+.order-status-header h3 {
+  margin-bottom: var(--space-2);
+}
+
+.order-status-header p {
+  color: var(--color-gray-500);
+  font-size: var(--text-sm);
+}
+
+.order-status-form {
+  display: flex;
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
+}
+
+.order-status-form input {
+  flex: 1;
+  border: 1.5px solid var(--color-gray-200);
+  border-radius: var(--radius-lg);
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--text-sm);
+}
+
+.order-status-form input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(45, 106, 79, 0.15);
+  outline: none;
+}
+
+.status-empty,
+.status-card {
+  background: var(--color-cream);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  border: 1px solid var(--color-gray-100);
+}
+
+.status-empty {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  color: var(--color-gray-600);
+}
+
+.status-card-head {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-4);
+  align-items: flex-start;
+  margin-bottom: var(--space-4);
+}
+
+.status-eyebrow {
+  display: block;
+  color: var(--color-primary);
+  font-size: var(--text-xs);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-1);
+}
+
+.status-card h4 {
+  margin: 0;
+  color: var(--color-primary-dark);
+}
+
+.status-pill {
+  background: var(--color-primary-bg);
+  color: var(--color-primary-dark);
+  border-radius: var(--radius-full);
+  padding: 6px 10px;
+  font-size: var(--text-xs);
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.status-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
+}
+
+.status-grid span {
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+  color: var(--color-gray-600);
+  font-size: var(--text-xs);
+}
+
+.status-grid strong {
+  display: block;
+  color: var(--color-gray-900);
+  font-size: var(--text-sm);
+  margin-bottom: 2px;
+}
+
+.status-steps {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.status-step {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  color: var(--color-gray-500);
+  font-weight: 600;
+  font-size: var(--text-sm);
+}
+
+.status-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: var(--radius-full);
+  background: var(--color-gray-300);
+  box-shadow: 0 0 0 4px var(--color-white);
+}
+
+.status-step.done {
+  color: var(--color-primary-dark);
+}
+
+.status-step.done .status-dot {
+  background: var(--color-success);
+}
+
+.status-note {
+  margin-top: var(--space-5);
+  color: var(--color-gray-500);
+  font-size: var(--text-xs);
+}
+
+@media (max-width: 640px) {
+  .order-status-panel {
+    padding: var(--space-5);
+  }
+
+  .order-status-form {
+    flex-direction: column;
+  }
+
+  .status-card-head,
+  .status-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .status-card-head {
+    flex-direction: column;
   }
 }
