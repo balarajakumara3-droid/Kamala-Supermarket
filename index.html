@@ -173,6 +173,11 @@
     }
   </style>
   <div id="splash">
+    <script>
+      if (sessionStorage.getItem('splashDone')) {
+        document.getElementById('splash').style.display = 'none';
+      }
+    </script>
     <div class="splash-bg-glow"></div>
     <div class="splash-content">
       <div class="splash-logo">
