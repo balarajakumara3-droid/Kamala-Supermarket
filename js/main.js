@@ -102,7 +102,7 @@ function initMobileMenu() {
 // Scroll Reveal Animations
 // ============================================
 function initScrollAnimations() {
-  const revealElements = document.querySelectorAll('.reveal');
+  const revealElements = document.querySelectorAll('.reveal:not(.visible)');
   
   if (revealElements.length === 0) return;
 
@@ -418,5 +418,6 @@ window.KS = {
   formatPrice,
   generateWhatsAppLink,
   scrollToSection,
-  showToast
+  showToast,
+  initScrollAnimations
 };

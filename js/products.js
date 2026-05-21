@@ -202,6 +202,10 @@ const Products = {
         <div class="category-count">${cat.count}+ items</div>
       </a>
     `).join('');
+
+    if (window.KS && typeof window.KS.initScrollAnimations === 'function') {
+      window.KS.initScrollAnimations();
+    }
   },
 
   // Init product filters on products page
