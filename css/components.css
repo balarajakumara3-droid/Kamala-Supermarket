@@ -2718,6 +2718,102 @@
   box-shadow: 0 0 0 3px rgba(45, 106, 79, 0.2);
 }
 
+.gateway-summary-card,
+.razorpay-info-panel {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.gateway-summary-card {
+  grid-template-columns: auto 1fr;
+  align-items: flex-start;
+  background: linear-gradient(135deg, var(--color-primary-bg), var(--color-white));
+  border: 1px solid rgba(45, 106, 79, 0.18);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.gateway-summary-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  background: var(--color-white);
+  display: grid;
+  place-items: center;
+  font-size: 1.4rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.gateway-summary-card h4 {
+  margin: 0 0 var(--space-1);
+  color: var(--color-primary-dark);
+  font-size: var(--text-lg);
+}
+
+.gateway-summary-card p,
+.rzp-desc {
+  margin: 0;
+  color: var(--color-gray-600);
+  font-size: var(--text-sm);
+  line-height: var(--leading-relaxed);
+}
+
+.gateway-safe-note {
+  background: var(--color-accent-bg);
+  border: 1px solid rgba(255, 107, 53, 0.24);
+  border-radius: var(--radius-lg);
+  padding: var(--space-3) var(--space-4);
+  color: var(--color-accent-dark);
+  display: grid;
+  gap: 2px;
+  margin-bottom: var(--space-4);
+  font-size: var(--text-sm);
+  line-height: var(--leading-normal);
+}
+
+.rzp-logo-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.rzp-methods-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.rzp-method-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--color-gray-50);
+  border: 1px solid var(--color-gray-200);
+  border-radius: var(--radius-full);
+  color: var(--color-gray-700);
+  font-size: var(--text-xs);
+  font-weight: 800;
+  line-height: 1;
+  padding: 9px 11px;
+  white-space: nowrap;
+}
+
+.rzp-trust-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.rzp-trust-row span {
+  color: var(--color-primary-dark);
+  background: var(--color-primary-bg);
+  border-radius: var(--radius-full);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  padding: 7px 10px;
+}
+
 /* Checkout must stay tappable and scrollable on small screens. */
 .checkout-modal,
 .checkout-header,
@@ -2782,10 +2878,13 @@
     height: 178px;
   }
 
-  .card-number-display {
-    font-size: 1rem;
-    letter-spacing: 1px;
-    word-spacing: 2px;
+  .gateway-summary-card {
+    grid-template-columns: 1fr;
+  }
+
+  .gateway-summary-icon {
+    width: 40px;
+    height: 40px;
   }
 
   .upi-apps,

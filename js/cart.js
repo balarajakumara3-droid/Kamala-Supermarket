@@ -354,43 +354,18 @@ const Checkout = {
               </div>
             </div>
             
-            <!-- CARD PAYMENT FORM PANEL -->
+            <!-- CARD / NET BANKING GATEWAY PANEL -->
             <div class="payment-details-panel" id="pay-panel-card">
-              <!-- Visual Credit Card Cardboard -->
-              <div class="card-visualization-container">
-                <div class="credit-card-box" id="credit-card-box">
-                  <div class="card-face front">
-                    <div class="card-glow"></div>
-                    <div class="flex justify-between items-center" style="width:100%; display:flex;">
-                      <div class="card-chip"></div>
-                      <div class="card-logo" id="vis-card-brand" style="color: #fff; font-size: 14px; font-weight: 800;">RUPAY</div>
-                    </div>
-                    <div class="card-number-display" id="vis-card-num">•••• •••• •••• ••••</div>
-                    <div class="card-details-row" style="display:flex; justify-content:space-between; font-size:9px;">
-                      <div>
-                        <span class="card-label">Card Holder</span>
-                        <span class="card-val" id="vis-card-holder">YOUR NAME</span>
-                      </div>
-                      <div style="text-align: right;">
-                        <span class="card-label">Expires</span>
-                        <span class="card-val" id="vis-card-expiry">MM/YY</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="card-face back">
-                    <div class="card-glow"></div>
-                    <div class="card-magnetic-stripe"></div>
-                    <div class="card-signature-bar">
-                      <span class="card-cvv-display" id="vis-card-cvv">•••</span>
-                    </div>
-                    <div style="padding:0 var(--space-5); text-align:right; font-size:9px; color:rgba(255,255,255,0.4);">
-                      SECURE GATEWAY SIMULATION
-                    </div>
-                  </div>
+              <div class="gateway-summary-card">
+                <div class="gateway-summary-icon">💳</div>
+                <div>
+                  <h4>Card / Net Banking Gateway</h4>
+                  <p>Choose this if the customer wants to pay by card, net banking, wallet, EMI, or Pay Later. The shop should send or verify the secure Razorpay payment before dispatch.</p>
                 </div>
               </div>
-              <div class="invoice-warning" style="margin-bottom: var(--space-4);">
-                Card, net banking, wallet, EMI, and Pay Later payments are handled through the secure Razorpay gateway. We do not collect or store card numbers on this website.
+              <div class="gateway-safe-note">
+                <strong>No card details are collected here.</strong>
+                <span>All sensitive payment details must be entered only inside the secure Razorpay/payment gateway page.</span>
               </div>
               
               <div class="rzp-methods-row">
