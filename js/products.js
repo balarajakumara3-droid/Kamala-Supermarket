@@ -154,8 +154,8 @@ const Products = {
           <img src="${product.image}" alt="${product.name}" loading="lazy" 
                onerror="this.src='https://via.placeholder.com/400x400/f3f4f6/9ca3af?text=${encodeURIComponent(product.name)}'">
           <div class="product-actions-overlay">
-            <button onclick="Cart.addItem(Products.getById('${product.id}'))" title="Add to Cart">🛒</button>
-            <button onclick="WhatsApp.orderProduct(Products.getById('${product.id}'))" title="Order on WhatsApp">💬</button>
+            <button onclick="Cart.addItem(Products.getById('${product.id}'))" title="Add to Cart"><img src="images/cart.svg" alt="Add to Cart" class="btn-card-overlay-icon-img"></button>
+            <button onclick="WhatsApp.orderProduct(Products.getById('${product.id}'))" title="Order on WhatsApp"><img src="images/whatsapp.svg" alt="Order on WhatsApp" class="btn-wa-card-overlay-icon-img"></button>
           </div>
         </div>
         <div class="product-info">
@@ -169,10 +169,10 @@ const Products = {
           </div>
           <div class="product-buttons">
             <button class="btn btn-primary btn-sm" onclick="Cart.addItem(Products.getById('${product.id}'))">
-              🛒 Add to Cart
+              <img src="images/cart.svg" alt="Cart" class="btn-cart-icon-img"> Add to Cart
             </button>
             <button class="btn btn-whatsapp btn-sm" onclick="WhatsApp.orderProduct(Products.getById('${product.id}'))">
-              💬 WhatsApp
+              <img src="images/whatsapp.svg" alt="WhatsApp" class="btn-wa-card-icon-img"> WhatsApp
             </button>
           </div>
         </div>

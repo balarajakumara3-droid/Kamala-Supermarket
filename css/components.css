@@ -315,6 +315,49 @@
   z-index: 10;
 }
 
+/* Card Button Icons (Add to Cart / WhatsApp on Product Grid Cards) */
+.btn-cart-icon-img {
+  width: 14px !important;
+  height: 14px !important;
+  max-width: 14px !important;
+  max-height: 14px !important;
+  flex-shrink: 0 !important;
+  object-fit: contain !important;
+  filter: brightness(0) invert(1) !important; /* Pure white inside green/primary small buttons */
+  pointer-events: none;
+}
+
+.btn-wa-card-icon-img {
+  width: 14px !important;
+  height: 14px !important;
+  max-width: 14px !important;
+  max-height: 14px !important;
+  flex-shrink: 0 !important;
+  object-fit: contain !important;
+  filter: brightness(0) invert(1) !important; /* Pure white inside green/whatsapp small buttons */
+  pointer-events: none;
+}
+
+/* Card Button Overlay Icons */
+.btn-card-overlay-icon-img,
+.btn-wa-card-overlay-icon-img {
+  width: 20px !important;
+  height: 20px !important;
+  max-width: 20px !important;
+  max-height: 20px !important;
+  flex-shrink: 0 !important;
+  object-fit: contain !important;
+  filter: invert(32%) sepia(21%) saturate(1210%) hue-rotate(107deg) brightness(95%) contrast(85%) !important; /* Kamala primary green */
+  transition: all var(--transition-fast) ease;
+  pointer-events: none;
+}
+
+.product-actions-overlay button:hover .btn-card-overlay-icon-img,
+.product-actions-overlay button:hover .btn-wa-card-overlay-icon-img {
+  filter: brightness(0) invert(1) !important; /* Turn pure white on hover */
+}
+
+
 /* Bootstrap Icon sizing in nav buttons */
 .nav-search-btn .bi,
 .nav-cart-btn .bi {
