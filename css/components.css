@@ -790,10 +790,11 @@
   gap: var(--space-1.5); /* Compact gap to fit on all screens */
   margin-top: auto;
   margin-bottom: var(--space-2); /* Uncollapsible bottom margin guard */
+  flex-wrap: wrap; /* Safe wrapping for narrow cards */
 }
 
 .product-card .product-buttons .btn {
-  flex: 1;
+  flex: 1 1 100px; /* Grow, shrink, and wrap elegantly if card is too narrow */
   display: flex;
   align-items: center;
   justify-content: center;
