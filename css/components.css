@@ -325,6 +325,7 @@
   object-fit: contain !important;
   filter: brightness(0) invert(1) !important; /* Pure white inside green/primary small buttons */
   pointer-events: none;
+  margin-right: 4px !important; /* Tight, premium spacing */
 }
 
 .btn-wa-card-icon-img {
@@ -336,6 +337,7 @@
   object-fit: contain !important;
   filter: brightness(0) invert(1) !important; /* Pure white inside green/whatsapp small buttons */
   pointer-events: none;
+  margin-right: 4px !important; /* Tight, premium spacing */
 }
 
 /* Card Button Overlay Icons */
@@ -666,10 +668,11 @@
 
 .product-card .product-image {
   width: 100%;
-  aspect-ratio: 1;
+  aspect-ratio: 1 / 1;
   overflow: hidden;
   background: var(--color-gray-50);
   position: relative;
+  min-height: 180px; /* Protect against image collapses */
 }
 
 .product-card .product-image img {
@@ -784,8 +787,9 @@
 
 .product-card .product-buttons {
   display: flex;
-  gap: var(--space-2);
+  gap: var(--space-1.5); /* Compact gap to fit on all screens */
   margin-top: auto;
+  margin-bottom: var(--space-2); /* Uncollapsible bottom margin guard */
 }
 
 .product-card .product-buttons .btn {
@@ -795,7 +799,7 @@
   justify-content: center;
   height: 38px;
   font-size: var(--text-xs);
-  padding: 0 var(--space-2);
+  padding: 0 var(--space-1.5); /* Symmetrical 6px padding to prevent wrapping */
 }
 
 /* ============================================

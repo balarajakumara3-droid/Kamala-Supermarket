@@ -288,6 +288,7 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: var(--space-6);
+  padding-bottom: var(--space-10); /* 40px safe scrolling area at the bottom */
 }
 
 /* Why Choose Us */
