@@ -152,7 +152,7 @@ const Products = {
         ${!product.stock ? '<span class="product-badge out-of-stock">Out of Stock</span>' : ''}
         <div class="product-image">
           <img src="${product.image}" alt="${product.name}" loading="lazy" 
-               onerror="this.src='https://via.placeholder.com/400x400/f3f4f6/9ca3af?text=${encodeURIComponent(product.name)}'">
+               onerror="this.src='https://placehold.co/400x400/f3f4f6/9ca3af?text=${encodeURIComponent(product.name)}'">
           <div class="product-actions-overlay">
             <button onclick="Cart.addItem(Products.getById('${product.id}'))" title="Add to Cart"><img src="images/cart.svg" alt="Add to Cart" class="btn-card-overlay-icon-img"></button>
             <button onclick="WhatsApp.orderProduct(Products.getById('${product.id}'))" title="Order on WhatsApp"><img src="images/whatsapp.svg" alt="Order on WhatsApp" class="btn-wa-card-overlay-icon-img"></button>

@@ -10,7 +10,7 @@
       "brand": "Farm Fresh",
       "weight": "1 kg",
       "description": "Freshly picked red tomatoes from local farms. Perfect for curries, salads and chutneys.",
-      "image": "https://images.unsplash.com/photo-1546470427-0d4db154ceb8?w=400&h=400&fit=crop",
+      "image": "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=400&h=400&fit=crop",
       "stock": true,
       "featured": true,
       "deal": true
@@ -39,7 +39,7 @@
       "brand": "Farm Fresh",
       "weight": "1 kg",
       "description": "Clean and fresh potatoes. Perfect for chips, curry and biryani.",
-      "image": "https://images.unsplash.com/photo-1518977676601-b53f82ber40a?w=400&h=400&fit=crop",
+      "image": "https://images.unsplash.com/photo-1590165482129-1b8b27698780?w=400&h=400&fit=crop",
       "stock": true
     },
     {
@@ -164,7 +164,7 @@
       "brand": "Daawat",
       "weight": "5 kg",
       "description": "Lightweight and aromatic Sona Masoori rice.",
-      "image": "https://images.unsplash.com/photo-1536304993881-460cfe7e0784?w=400&h=400&fit=crop",
+      "image": "https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?w=400&h=400&fit=crop",
       "stock": true
     },
     {
@@ -177,7 +177,7 @@
       "brand": "Tata Sampann",
       "weight": "1 kg",
       "description": "Unpolished toor dal with rich taste and high protein.",
-      "image": "https://images.unsplash.com/photo-1585996837890-81bc5c1b1d86?w=400&h=400&fit=crop",
+      "image": "https://images.unsplash.com/photo-1599940824399-b87987ceb72a?w=400&h=400&fit=crop",
       "stock": true
     },
     {
@@ -284,7 +284,7 @@
       "brand": "Surf Excel",
       "weight": "1 kg",
       "description": "Powerful stain remover for all your laundry needs.",
-      "image": "https://images.unsplash.com/photo-1610557892470-55d9e80c0eb7?w=400&h=400&fit=crop",
+      "image": "https://images.unsplash.com/photo-1563453392212-326f5e854473?w=400&h=400&fit=crop",
       "stock": true
     },
     {
