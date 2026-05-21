@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kamala Gold Loyalty Rewards Program — Villupuram</title>
+  <meta name="description" content="Join Kamala Gold Loyalty Rewards Program. Earn reward points on every grocery purchase and redeem them for direct discounts. Sign up for free today!">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛒</text></svg>">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <style>
+    .loyalty-benefit-card {
+      background: var(--color-white);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--color-gray-100);
+      padding: var(--space-8);
+      box-shadow: var(--shadow-sm);
+      text-align: center;
+      transition: transform var(--transition-normal);
+    }
+    .loyalty-benefit-card:hover {
+      transform: translateY(-5px);
+    }
+    .loyalty-icon {
+      font-size: 3rem;
+      margin-bottom: var(--space-4);
+    }
+    .loyalty-features-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+      max-width: var(--container-narrow);
+      margin: 0 auto;
+      margin-top: var(--space-8);
+    }
+    .loyalty-feature-item {
+      background: var(--color-white);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--color-gray-100);
+      padding: var(--space-6);
+      display: flex;
+      gap: var(--space-4);
+      align-items: center;
+    }
+    .loyalty-feature-number {
+      font-size: var(--text-2xl);
+      font-weight: 700;
+      color: var(--color-primary);
+      background: var(--color-gray-50);
+      width: 50px;
+      height: 50px;
+      border-radius: var(--radius-full);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar" id="navbar"><div class="container"><a href="index.html" class="nav-logo"><div class="logo-icon">🛒</div><div class="logo-text">Kamala <span>Super</span></div></a><div class="nav-menu" id="nav-menu"><a href="index.html">Home</a><a href="about.html">About</a><div class="nav-dropdown"><a href="products.html">Products ▾</a><div class="nav-dropdown-menu"><a href="vegetables-fruits.html"><span class="dropdown-icon">🥬</span> Vegetables & Fruits</a><a href="dairy-eggs.html"><span class="dropdown-icon">🥛</span> Dairy & Eggs</a><a href="rice-dals-grains.html"><span class="dropdown-icon">🌾</span> Rice, Dals & Grains</a><a href="snacks-beverages.html"><span class="dropdown-icon">🍿</span> Snacks & Beverages</a><a href="household-cleaning.html"><span class="dropdown-icon">🧴</span> Household & Cleaning</a></div></div><a href="offers.html">Offers</a><a href="order-online.html">Order Online</a><a href="contact.html">Contact</a></div><div class="nav-actions"><button class="nav-search-btn" id="search-btn">🔍</button><button class="nav-cart-btn" id="cart-btn">🛒<span class="cart-count" style="display:none;">0</span></button><a href="https://wa.me/919876543210" target="_blank" class="nav-whatsapp-btn">💬 WhatsApp Order</a></div><button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button></div></nav>
+  <div class="search-modal" id="search-modal"><div class="search-modal-content"><div class="search-bar"><span class="search-icon">🔍</span><input type="text" placeholder="Search products..." autocomplete="off" id="global-search"></div><div class="search-results" id="search-results"></div></div></div>
+
+  <section class="page-hero" style="background: linear-gradient(135deg, #b794f4 0%, #6b46c1 100%);">
+    <div class="container">
+      <div class="breadcrumb" style="justify-content:center;margin-bottom:var(--space-4);"><a href="index.html" style="color:rgba(255,255,255,0.7);">Home</a><span class="separator" style="color:rgba(255,255,255,0.5);">›</span><span class="current" style="color:#fff;">Loyalty Program</span></div>
+      <h1 style="color:#fff;">🏅 Kamala Gold Rewards</h1>
+      <p style="color:rgba(255,255,255,0.9);">Earn points on every purchase and save big on your daily shopping!</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">Kamala Gold Program</div>
+        <h2>How Kamala Gold <span class="text-gradient">Rewards Work</span></h2>
+        <p>A simple program designed to thank our loyal customers in Villupuram.</p>
+      </div>
+
+      <div class="grid grid-3 gap-8">
+        <div class="loyalty-benefit-card reveal">
+          <div class="loyalty-icon">🛍️</div>
+          <h4>1. Spend & Earn</h4>
+          <p>Earn **1 Reward Point** for every **₹100** spent online or at our physical store. No limits on earnings!</p>
+        </div>
+        <div class="loyalty-benefit-card reveal reveal-delay-1">
+          <div class="loyalty-icon">💰</div>
+          <h4>2. Double Point Days</h4>
+          <p>Earn double points (2x points per ₹100 spent) when you purchase on **Wednesdays** and **Saturdays**.</p>
+        </div>
+        <div class="loyalty-benefit-card reveal reveal-delay-2">
+          <div class="loyalty-icon">🎁</div>
+          <h4>3. Easy Redemption</h4>
+          <p>**1 Point = ₹1** cash discount. Redeem your points on any subsequent purchase above ₹300.</p>
+        </div>
+      </div>
+
+      <div class="section-header" style="margin-top: var(--space-16); margin-bottom: var(--space-8);">
+        <div class="section-label">Features & Rules</div>
+        <h2>Program Highlights</h2>
+      </div>
+
+      <div class="loyalty-features-list">
+        <div class="loyalty-feature-item reveal">
+          <div class="loyalty-feature-number">1</div>
+          <div>
+            <h4 style="margin-bottom: var(--space-1);">Free Lifetime Membership</h4>
+            <p style="font-size: var(--text-sm); color: var(--color-gray-550);">No membership fees, renewal charges or complex forms. Signing up is 100% free for life.</p>
+          </div>
+        </div>
+        <div class="loyalty-feature-item reveal reveal-delay-1">
+          <div class="loyalty-feature-number">2</div>
+          <div>
+            <h4 style="margin-bottom: var(--space-1);">Instant Activation</h4>
+            <p style="font-size: var(--text-sm); color: var(--color-gray-550);">Simply register your phone number at checkout. Points are tracked automatically on your mobile number.</p>
+          </div>
+        </div>
+        <div class="loyalty-feature-item reveal reveal-delay-2">
+          <div class="loyalty-feature-number">3</div>
+          <div>
+            <h4 style="margin-bottom: var(--space-1);">Exclusive Offers</h4>
+            <p style="font-size: var(--text-sm); color: var(--color-gray-550);">Loyalty members receive customized offer sheets and exclusive deal alerts on WhatsApp every week.</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: var(--space-12);" class="reveal">
+        <a href="https://wa.me/919876543210?text=I'd like to register for Kamala Gold Rewards Program" target="_blank" class="btn btn-whatsapp btn-xl">💬 Sign Up via WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer"><div class="container"><div class="footer-grid"><div class="footer-brand"><div class="logo-text">Kamala <span>Supermarket</span></div><p>Villupuram's most trusted supermarket.</p><div class="footer-social"><a href="#">📘</a><a href="#">📸</a><a href="#">▶️</a><a href="https://wa.me/919876543210">💬</a></div></div><div class="footer-column"><h4>Quick Links</h4><ul><li><a href="index.html">→ Home</a></li><li><a href="about.html">→ About</a></li><li><a href="products.html">→ Products</a></li><li><a href="offers.html">→ Offers</a></li><li><a href="contact.html">→ Contact</a></li></ul></div><div class="footer-column"><h4>Categories</h4><ul><li><a href="vegetables-fruits.html">→ Vegetables & Fruits</a></li><li><a href="dairy-eggs.html">→ Dairy & Eggs</a></li><li><a href="rice-dals-grains.html">→ Rice & Grains</a></li><li><a href="snacks-beverages.html">→ Snacks</a></li><li><a href="household-cleaning.html">→ Household</a></li></ul></div><div class="footer-column"><h4>Contact</h4><ul><li><a href="tel:+919876543210">📞 +91 98765 43210</a></li><li><a href="https://wa.me/919876543210">💬 WhatsApp</a></li><li>📍 Main Road, Villupuram</li></ul></div></div><div class="footer-bottom"><span>© 2025 Kamala Supermarket.</span><span><a href="privacy-policy.html">Privacy</a> · Built by <a href="https://ideamanifest.com" target="_blank">IdeaManifest</a></span></div></div></footer>
+  <div class="cart-overlay" id="cart-overlay"></div><div class="cart-sidebar" id="cart-sidebar"><div class="cart-sidebar-header"><h3>🛒 Your Cart</h3><button class="cart-sidebar-close" id="cart-close">✕</button></div><div class="cart-sidebar-body" id="cart-body"><div class="cart-empty"><div class="empty-icon">🛒</div><h4>Cart is empty</h4></div></div><div class="cart-sidebar-footer" id="cart-footer" style="display:none;"><div class="cart-total"><span class="cart-total-label">Total</span><span class="cart-total-price">₹0</span></div><button class="btn btn-whatsapp btn-lg" onclick="Cart.orderViaWhatsApp()" style="margin-bottom:8px;">💬 Order via WhatsApp</button><button class="btn btn-ghost btn-sm" onclick="Cart.clear()" style="width:100%;color:var(--color-gray-400);">Clear</button></div></div>
+  <div class="whatsapp-float"><a href="https://wa.me/919876543210" target="_blank" class="float-btn">💬</a></div><button class="back-to-top" id="back-to-top">↑</button>
+
+  <script src="js/main.js"></script><script src="js/whatsapp.js"></script><script src="js/cart.js"></script><script src="js/products.js"></script>
+  <script>document.addEventListener('DOMContentLoaded', async () => { await Products.loadProducts(); Products.initSearchModal(); });</script>
+</body>
+</html>

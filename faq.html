@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ — Kamala Supermarket Villupuram</title>
+  <meta name="description" content="Frequently Asked Questions about Kamala Supermarket in Villupuram. Find answers on WhatsApp ordering, home delivery, timing, return policy.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛒</text></svg>">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <style>
+    .faq-list {
+      max-width: var(--container-narrow);
+      margin: 0 auto;
+      margin-top: var(--space-8);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+    }
+    .faq-item {
+      background: var(--color-white);
+      border: 1px solid var(--color-gray-100);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+    .faq-question {
+      width: 100%;
+      padding: var(--space-5) var(--space-6);
+      background: none;
+      border: none;
+      text-align: left;
+      font-weight: 600;
+      font-size: var(--text-base);
+      color: var(--color-gray-800);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background var(--transition-fast);
+    }
+    .faq-question:hover {
+      background: var(--color-gray-50);
+    }
+    .faq-question::after {
+      content: '+';
+      font-size: 1.5rem;
+      color: var(--color-primary);
+      transition: transform var(--transition-fast);
+    }
+    .faq-item.active .faq-question::after {
+      content: '−';
+    }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height var(--transition-normal) ease-out, padding var(--transition-normal);
+      padding: 0 var(--space-6);
+      color: var(--color-gray-650);
+      font-size: var(--text-sm);
+      line-height: 1.6;
+    }
+    .faq-item.active .faq-answer {
+      max-height: 300px;
+      padding-bottom: var(--space-5);
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar" id="navbar"><div class="container"><a href="index.html" class="nav-logo"><div class="logo-icon">🛒</div><div class="logo-text">Kamala <span>Super</span></div></a><div class="nav-menu" id="nav-menu"><a href="index.html">Home</a><a href="about.html">About</a><div class="nav-dropdown"><a href="products.html">Products ▾</a><div class="nav-dropdown-menu"><a href="vegetables-fruits.html"><span class="dropdown-icon">🥬</span> Vegetables & Fruits</a><a href="dairy-eggs.html"><span class="dropdown-icon">🥛</span> Dairy & Eggs</a><a href="rice-dals-grains.html"><span class="dropdown-icon">🌾</span> Rice, Dals & Grains</a><a href="snacks-beverages.html"><span class="dropdown-icon">🍿</span> Snacks & Beverages</a><a href="household-cleaning.html"><span class="dropdown-icon">🧴</span> Household & Cleaning</a></div></div><a href="offers.html">Offers</a><a href="order-online.html">Order Online</a><a href="contact.html">Contact</a></div><div class="nav-actions"><button class="nav-search-btn" id="search-btn">🔍</button><button class="nav-cart-btn" id="cart-btn">🛒<span class="cart-count" style="display:none;">0</span></button><a href="https://wa.me/919876543210" target="_blank" class="nav-whatsapp-btn">💬 WhatsApp Order</a></div><button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button></div></nav>
+  <div class="search-modal" id="search-modal"><div class="search-modal-content"><div class="search-bar"><span class="search-icon">🔍</span><input type="text" placeholder="Search products..." autocomplete="off" id="global-search"></div><div class="search-results" id="search-results"></div></div></div>
+
+  <section class="page-hero">
+    <div class="container">
+      <div class="breadcrumb" style="justify-content:center;margin-bottom:var(--space-4);"><a href="index.html">Home</a><span class="separator">›</span><span class="current">FAQ</span></div>
+      <h1>Frequently Asked Questions</h1>
+      <p>Got a question? Find answers to commonly asked questions below.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="faq-list">
+        <div class="faq-item reveal">
+          <button class="faq-question" onclick="toggleFaq(this)">How do I order groceries on WhatsApp?</button>
+          <div class="faq-answer">
+            <p>It's simple! Browse our products, add items to your cart, click the Cart icon at the top right, and choose "Order via WhatsApp". This automatically creates a formatted list of all items and their prices in WhatsApp. Just hit send and our store team will confirm delivery details!</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal reveal-delay-1">
+          <button class="faq-question" onclick="toggleFaq(this)">What is the minimum order for free delivery?</button>
+          <div class="faq-answer">
+            <p>We offer <strong>FREE delivery</strong> for all orders above <strong>₹500</strong> within Villupuram city limits. For orders below ₹500, a minor delivery fee of ₹30 is applicable. The absolute minimum order value for home delivery is ₹200.</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal reveal-delay-2">
+          <button class="faq-question" onclick="toggleFaq(this)">How long does delivery take?</button>
+          <div class="faq-answer">
+            <p>We offer prompt same-day delivery! If you place your order before 2:00 PM, it will be delivered by evening (usually between 4 PM and 8 PM). Orders placed after 2 PM are scheduled for the next morning slot (9 AM – 1 PM).</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal">
+          <button class="faq-question" onclick="toggleFaq(this)">What payment methods do you accept?</button>
+          <div class="faq-answer">
+            <p>We accept all standard payment methods upon delivery: Cash on Delivery (COD), UPI payments (Google Pay, PhonePe, Paytm, etc.), and Debit/Credit cards. You only pay after you receive and inspect your items.</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal reveal-delay-1">
+          <button class="faq-question" onclick="toggleFaq(this)">Can I return or exchange products?</button>
+          <div class="faq-answer">
+            <p>Yes, absolutely! We have a customer-friendly return policy. If you receive a damaged, stale, or incorrect product, let us know within 24 hours. We will replace the product or issue a refund immediately with no questions asked.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer"><div class="container"><div class="footer-grid"><div class="footer-brand"><div class="logo-text">Kamala <span>Supermarket</span></div><p>Villupuram's most trusted supermarket.</p><div class="footer-social"><a href="#">📘</a><a href="#">📸</a><a href="#">▶️</a><a href="https://wa.me/919876543210">💬</a></div></div><div class="footer-column"><h4>Quick Links</h4><ul><li><a href="index.html">→ Home</a></li><li><a href="about.html">→ About</a></li><li><a href="products.html">→ Products</a></li><li><a href="offers.html">→ Offers</a></li><li><a href="contact.html">→ Contact</a></li></ul></div><div class="footer-column"><h4>Categories</h4><ul><li><a href="vegetables-fruits.html">→ Vegetables & Fruits</a></li><li><a href="dairy-eggs.html">→ Dairy & Eggs</a></li><li><a href="rice-dals-grains.html">→ Rice & Grains</a></li><li><a href="snacks-beverages.html">→ Snacks</a></li><li><a href="household-cleaning.html">→ Household</a></li></ul></div><div class="footer-column"><h4>Contact</h4><ul><li><a href="tel:+919876543210">📞 +91 98765 43210</a></li><li><a href="https://wa.me/919876543210">💬 WhatsApp</a></li><li>📍 Main Road, Villupuram</li></ul></div></div><div class="footer-bottom"><span>© 2025 Kamala Supermarket.</span><span><a href="privacy-policy.html">Privacy</a> · Built by <a href="https://ideamanifest.com" target="_blank">IdeaManifest</a></span></div></div></footer>
+  <div class="cart-overlay" id="cart-overlay"></div><div class="cart-sidebar" id="cart-sidebar"><div class="cart-sidebar-header"><h3>🛒 Your Cart</h3><button class="cart-sidebar-close" id="cart-close">✕</button></div><div class="cart-sidebar-body" id="cart-body"><div class="cart-empty"><div class="empty-icon">🛒</div><h4>Cart is empty</h4></div></div><div class="cart-sidebar-footer" id="cart-footer" style="display:none;"><div class="cart-total"><span class="cart-total-label">Total</span><span class="cart-total-price">₹0</span></div><button class="btn btn-whatsapp btn-lg" onclick="Cart.orderViaWhatsApp()" style="margin-bottom:8px;">💬 Order via WhatsApp</button><button class="btn btn-ghost btn-sm" onclick="Cart.clear()" style="width:100%;color:var(--color-gray-400);">Clear</button></div></div>
+  <div class="whatsapp-float"><a href="https://wa.me/919876543210" target="_blank" class="float-btn">💬</a></div><button class="back-to-top" id="back-to-top">↑</button>
+
+  <script src="js/main.js"></script><script src="js/whatsapp.js"></script><script src="js/cart.js"></script><script src="js/products.js"></script>
+  <script>
+    function toggleFaq(btn) {
+      const item = btn.parentElement;
+      const isActive = item.classList.contains('active');
+      
+      // Close all
+      document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('active'));
+      
+      if (!isActive) {
+        item.classList.add('active');
+      }
+    }
+    document.addEventListener('DOMContentLoaded', async () => { await Products.loadProducts(); Products.initSearchModal(); });
+  </script>
+</body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery — Kamala Supermarket Villupuram</title>
+  <meta name="description" content="Take a virtual tour of Kamala Supermarket in Villupuram. View our fresh vegetable racks, grocery sections, dairy products, clean store interiors.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛒</text></svg>">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <style>
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: var(--space-6);
+      margin-top: var(--space-8);
+    }
+    .gallery-item {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      cursor: pointer;
+      aspect-ratio: 4/3;
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform var(--transition-normal);
+    }
+    .gallery-item:hover img {
+      transform: scale(1.08);
+    }
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 600;
+      font-size: var(--text-base);
+      opacity: 0;
+      transition: opacity var(--transition-normal);
+    }
+    .gallery-item:hover .gallery-overlay {
+      opacity: 1;
+    }
+    /* Lightbox Modal */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.9);
+      z-index: 9999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-6);
+    }
+    .lightbox.active {
+      display: flex;
+    }
+    .lightbox-content {
+      position: relative;
+      max-width: 90%;
+      max-height: 80vh;
+    }
+    .lightbox-content img {
+      max-width: 100%;
+      max-height: 80vh;
+      border-radius: var(--radius-md);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    .lightbox-close {
+      position: absolute;
+      top: -40px;
+      right: 0;
+      color: #fff;
+      font-size: 2rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+    .lightbox-caption {
+      color: #fff;
+      text-align: center;
+      margin-top: var(--space-4);
+      font-size: var(--text-base);
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar" id="navbar"><div class="container"><a href="index.html" class="nav-logo"><div class="logo-icon">🛒</div><div class="logo-text">Kamala <span>Super</span></div></a><div class="nav-menu" id="nav-menu"><a href="index.html">Home</a><a href="about.html">About</a><div class="nav-dropdown"><a href="products.html">Products ▾</a><div class="nav-dropdown-menu"><a href="vegetables-fruits.html"><span class="dropdown-icon">🥬</span> Vegetables & Fruits</a><a href="dairy-eggs.html"><span class="dropdown-icon">🥛</span> Dairy & Eggs</a><a href="rice-dals-grains.html"><span class="dropdown-icon">🌾</span> Rice, Dals & Grains</a><a href="snacks-beverages.html"><span class="dropdown-icon">🍿</span> Snacks & Beverages</a><a href="household-cleaning.html"><span class="dropdown-icon">🧴</span> Household & Cleaning</a></div></div><a href="offers.html">Offers</a><a href="order-online.html">Order Online</a><a href="contact.html">Contact</a></div><div class="nav-actions"><button class="nav-search-btn" id="search-btn">🔍</button><button class="nav-cart-btn" id="cart-btn">🛒<span class="cart-count" style="display:none;">0</span></button><a href="https://wa.me/919876543210" target="_blank" class="nav-whatsapp-btn">💬 WhatsApp Order</a></div><button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button></div></nav>
+  <div class="search-modal" id="search-modal"><div class="search-modal-content"><div class="search-bar"><span class="search-icon">🔍</span><input type="text" placeholder="Search products..." autocomplete="off" id="global-search"></div><div class="search-results" id="search-results"></div></div></div>
+
+  <section class="page-hero">
+    <div class="container">
+      <div class="breadcrumb" style="justify-content:center;margin-bottom:var(--space-4);"><a href="index.html">Home</a><span class="separator">›</span><span class="current">Gallery</span></div>
+      <h1>Store Gallery</h1>
+      <p>Take a virtual look inside Villupuram's cleanest & best-stocked supermarket</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="gallery-grid">
+        <div class="gallery-item reveal" onclick="openLightbox('https://images.unsplash.com/photo-1542838132-92c53300491e?w=800&h=600&fit=crop', 'Fresh Vegetable Section')">
+          <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=500&h=375&fit=crop" alt="Fresh Vegetables">
+          <div class="gallery-overlay">🔍 Fresh Vegetables</div>
+        </div>
+        <div class="gallery-item reveal reveal-delay-1" onclick="openLightbox('https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=800&h=600&fit=crop', 'Clean Store Aisles')">
+          <img src="https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=500&h=375&fit=crop" alt="Store Aisles">
+          <div class="gallery-overlay">🔍 Clean Aisles</div>
+        </div>
+        <div class="gallery-item reveal reveal-delay-2" onclick="openLightbox('https://images.unsplash.com/photo-1578916171728-46686eac8d58?w=800&h=600&fit=crop', 'Fruit Baskets')">
+          <img src="https://images.unsplash.com/photo-1578916171728-46686eac8d58?w=500&h=375&fit=crop" alt="Fruits Section">
+          <div class="gallery-overlay">🔍 Fruits Section</div>
+        </div>
+        <div class="gallery-item reveal reveal-delay-3" onclick="openLightbox('https://images.unsplash.com/photo-1583947215259-38e31be8751f?w=800&h=600&fit=crop', 'Household & Cleaning Aisles')">
+          <img src="https://images.unsplash.com/photo-1583947215259-38e31be8751f?w=500&h=375&fit=crop" alt="Household Items">
+          <div class="gallery-overlay">🔍 Household items</div>
+        </div>
+        <div class="gallery-item reveal" onclick="openLightbox('https://images.unsplash.com/photo-1580913428023-02c695466d63?w=800&h=600&fit=crop', 'Rice & Staples Bags')">
+          <img src="https://images.unsplash.com/photo-1580913428023-02c695466d63?w=500&h=375&fit=crop" alt="Staples Section">
+          <div class="gallery-overlay">🔍 Staples Section</div>
+        </div>
+        <div class="gallery-item reveal reveal-delay-1" onclick="openLightbox('https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=800&h=600&fit=crop', 'Daily Snacks & Biscuits')">
+          <img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=500&h=375&fit=crop" alt="Snacks Shelves">
+          <div class="gallery-overlay">🔍 Snacks & Biscuits</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox Modal -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <div class="lightbox-content" onclick="event.stopPropagation()">
+      <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+      <img id="lightbox-img" src="" alt="Zoomed view">
+      <div class="lightbox-caption" id="lightbox-caption"></div>
+    </div>
+  </div>
+
+  <footer class="footer"><div class="container"><div class="footer-grid"><div class="footer-brand"><div class="logo-text">Kamala <span>Supermarket</span></div><p>Villupuram's most trusted supermarket.</p><div class="footer-social"><a href="#">📘</a><a href="#">📸</a><a href="#">▶️</a><a href="https://wa.me/919876543210">💬</a></div></div><div class="footer-column"><h4>Quick Links</h4><ul><li><a href="index.html">→ Home</a></li><li><a href="about.html">→ About</a></li><li><a href="products.html">→ Products</a></li><li><a href="offers.html">→ Offers</a></li><li><a href="contact.html">→ Contact</a></li></ul></div><div class="footer-column"><h4>Categories</h4><ul><li><a href="vegetables-fruits.html">→ Vegetables & Fruits</a></li><li><a href="dairy-eggs.html">→ Dairy & Eggs</a></li><li><a href="rice-dals-grains.html">→ Rice & Grains</a></li><li><a href="snacks-beverages.html">→ Snacks</a></li><li><a href="household-cleaning.html">→ Household</a></li></ul></div><div class="footer-column"><h4>Contact</h4><ul><li><a href="tel:+919876543210">📞 +91 98765 43210</a></li><li><a href="https://wa.me/919876543210">💬 WhatsApp</a></li><li>📍 Main Road, Villupuram</li></ul></div></div><div class="footer-bottom"><span>© 2025 Kamala Supermarket.</span><span><a href="privacy-policy.html">Privacy</a> · Built by <a href="https://ideamanifest.com" target="_blank">IdeaManifest</a></span></div></div></footer>
+  <div class="cart-overlay" id="cart-overlay"></div><div class="cart-sidebar" id="cart-sidebar"><div class="cart-sidebar-header"><h3>🛒 Your Cart</h3><button class="cart-sidebar-close" id="cart-close">✕</button></div><div class="cart-sidebar-body" id="cart-body"><div class="cart-empty"><div class="empty-icon">🛒</div><h4>Cart is empty</h4></div></div><div class="cart-sidebar-footer" id="cart-footer" style="display:none;"><div class="cart-total"><span class="cart-total-label">Total</span><span class="cart-total-price">₹0</span></div><button class="btn btn-whatsapp btn-lg" onclick="Cart.orderViaWhatsApp()" style="margin-bottom:8px;">💬 Order via WhatsApp</button><button class="btn btn-ghost btn-sm" onclick="Cart.clear()" style="width:100%;color:var(--color-gray-400);">Clear</button></div></div>
+  <div class="whatsapp-float"><a href="https://wa.me/919876543210" target="_blank" class="float-btn">💬</a></div><button class="back-to-top" id="back-to-top">↑</button>
+
+  <script src="js/main.js"></script><script src="js/whatsapp.js"></script><script src="js/cart.js"></script><script src="js/products.js"></script>
+  <script>
+    function openLightbox(src, caption) {
+      const modal = document.getElementById('lightbox');
+      const img = document.getElementById('lightbox-img');
+      const cap = document.getElementById('lightbox-caption');
+      img.src = src;
+      cap.textContent = caption;
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      const modal = document.getElementById('lightbox');
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('DOMContentLoaded', async () => { await Products.loadProducts(); Products.initSearchModal(); });
+  </script>
+</body>
+</html>

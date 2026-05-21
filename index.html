@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kamala Supermarket — Fresh Groceries Delivered in Villupuram</title>
+  <meta name="description" content="Kamala Supermarket — Villupuram's trusted supermarket for fresh vegetables, fruits, dairy, rice, snacks & household items. Order on WhatsApp or online. Fast delivery!">
+  <meta name="keywords" content="supermarket Villupuram, grocery delivery Villupuram, fresh vegetables Villupuram, online grocery Villupuram">
+  <meta name="author" content="Kamala Supermarket">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Kamala Supermarket — Fresh Groceries Delivered in Villupuram">
+  <meta property="og:description" content="Your trusted local supermarket in Villupuram. Fresh produce, best prices, fast delivery. Order now on WhatsApp!">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_IN">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛒</text></svg>">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+
+  <!-- Schema.org LocalBusiness -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "GroceryStore",
+    "name": "Kamala Supermarket",
+    "description": "Fresh groceries and household items in Villupuram, Tamil Nadu",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Main Road",
+      "addressLocality": "Villupuram",
+      "addressRegion": "Tamil Nadu",
+      "postalCode": "605602",
+      "addressCountry": "IN"
+    },
+    "telephone": "+919876543210",
+    "openingHours": "Mo-Sa 07:00-22:00, Su 08:00-21:00",
+    "priceRange": "₹"
+  }
+  </script>
+</head>
+<body>
+
+  <!-- ============================================
+       Top Info Bar
+       ============================================ -->
+  <div class="top-bar">
+    <div class="container">
+      <div class="top-bar-left">
+        <a href="tel:+919876543210">📞 +91 98765 43210</a>
+        <a href="mailto:info@kamalasupermarket.in">✉️ info@kamalasupermarket.in</a>
+      </div>
+      <div class="top-bar-right">
+        <span>📍 Main Road, Villupuram</span>
+        <div class="social-links">
+          <a href="#" title="Facebook">📘</a>
+          <a href="#" title="Instagram">📸</a>
+          <a href="#" title="YouTube">▶️</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================
+       Marquee Bar — Offers Ticker
+       ============================================ -->
+  <div class="marquee-bar">
+    <div class="marquee-track">
+      <span>Free Delivery on orders above ₹500!</span>
+      <span>Fresh Vegetables — Updated Daily Prices!</span>
+      <span>Flat 10% OFF on first WhatsApp order — Use code: KAMALA10</span>
+      <span>Monthly Grocery Bundles starting at ₹2,000!</span>
+      <span>Same-day delivery in Villupuram — Order before 2 PM!</span>
+    </div>
+  </div>
+
+  <!-- ============================================
+       Navigation
+       ============================================ -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-logo">
+        <div class="logo-icon">🛒</div>
+        <div class="logo-text">Kamala <span>Super</span></div>
+      </a>
+
+      <div class="nav-menu" id="nav-menu">
+        <a href="index.html" class="active">Home</a>
+        <a href="about.html">About</a>
+        <div class="nav-dropdown">
+          <a href="products.html">Products ▾</a>
+          <div class="nav-dropdown-menu">
+            <a href="vegetables-fruits.html"><span class="dropdown-icon">🥬</span> Vegetables & Fruits</a>
+            <a href="dairy-eggs.html"><span class="dropdown-icon">🥛</span> Dairy & Eggs</a>
+            <a href="rice-dals-grains.html"><span class="dropdown-icon">🌾</span> Rice, Dals & Grains</a>
+            <a href="snacks-beverages.html"><span class="dropdown-icon">🍿</span> Snacks & Beverages</a>
+            <a href="household-cleaning.html"><span class="dropdown-icon">🧴</span> Household & Cleaning</a>
+          </div>
+        </div>
+        <a href="offers.html">Offers</a>
+        <a href="order-online.html">Order Online</a>
+        <a href="contact.html">Contact</a>
+      </div>
+
+      <div class="nav-actions">
+        <button class="nav-search-btn" id="search-btn" title="Search Products">🔍</button>
+        <button class="nav-cart-btn" id="cart-btn" title="Shopping Cart">
+          🛒
+          <span class="cart-count" style="display:none;">0</span>
+        </button>
+        <a href="https://wa.me/919876543210?text=Hi%20Kamala%20Supermarket!" target="_blank" class="nav-whatsapp-btn">
+          💬 WhatsApp Order
+        </a>
+      </div>
+
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ============================================
+       Search Modal
+       ============================================ -->
+  <div class="search-modal" id="search-modal">
+    <div class="search-modal-content">
+      <div class="search-bar">
+        <span class="search-icon">🔍</span>
+        <input type="text" placeholder="Search for vegetables, fruits, rice, snacks..." autocomplete="off" id="global-search">
+        <button class="search-btn" onclick="window.location.href='products.html?search='+document.getElementById('global-search').value">Search</button>
+      </div>
+      <div class="search-results" id="search-results"></div>
+    </div>
+  </div>
+
+  <!-- ============================================
+       HERO SECTION
+       ============================================ -->
+  <section class="hero" id="hero">
+    <div class="hero-bg-shapes">
+      <div class="shape shape-1"></div>
+      <div class="shape shape-2"></div>
+      <div class="shape shape-3"></div>
+    </div>
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">🎉 Villupuram's #1 Local Supermarket — Now Online!</div>
+        <h1>Fresh Groceries<br>Delivered to Your <span class="highlight">Doorstep</span></h1>
+        <p class="hero-desc">
+          Shop fresh vegetables, fruits, dairy, rice, snacks & more from Kamala Supermarket. 
+          Order via WhatsApp or browse online — fast delivery across Villupuram!
+        </p>
+        <div class="hero-actions">
+          <a href="https://wa.me/919876543210?text=Hi%20Kamala%20Supermarket!%20I%20want%20to%20place%20an%20order." 
+             target="_blank" class="btn btn-whatsapp btn-xl">
+            💬 Order on WhatsApp
+          </a>
+          <a href="products.html" class="btn btn-outline-white btn-xl">
+            🛍️ Browse Products
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="number" data-count="500" data-suffix="+">0+</div>
+            <div class="label">Products</div>
+          </div>
+          <div class="hero-stat">
+            <div class="number" data-count="5000" data-suffix="+">0+</div>
+            <div class="label">Happy Customers</div>
+          </div>
+          <div class="hero-stat">
+            <div class="number" data-count="15" data-suffix="+">0+</div>
+            <div class="label">Years Serving</div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=600&h=500&fit=crop" 
+             alt="Fresh groceries at Kamala Supermarket" 
+             class="hero-img-main">
+        <div class="hero-float-card card-1">
+          <div class="icon">🚚</div>
+          <div class="text">
+            <strong>Fast Delivery</strong>
+            <span>Same day delivery</span>
+          </div>
+        </div>
+        <div class="hero-float-card card-2">
+          <div class="rating">
+            <span class="stars">⭐⭐⭐⭐⭐</span>
+            <span class="rating-text">4.8</span>
+          </div>
+          <span class="review-count">2,400+ Google Reviews</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       CATEGORIES SECTION
+       ============================================ -->
+  <section class="categories-section section" id="categories">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">Shop by Category</div>
+        <h2>Browse Our <span class="text-gradient">Fresh Collection</span></h2>
+        <p>Everything your kitchen needs — from farm-fresh produce to daily essentials</p>
+      </div>
+      <div class="grid grid-6 gap-6" id="category-grid">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       FLASH DEALS SECTION
+       ============================================ -->
+  <section class="flash-deals-section section" id="deals">
+    <div class="container">
+      <div class="flash-deals-header">
+        <div>
+          <div class="section-label" style="justify-content:flex-start;">🔥 Today's Deals</div>
+          <h2>Flash Deals — <span class="text-gradient-accent">Save Big!</span></h2>
+        </div>
+        <div class="flash-timer">
+          <span class="flash-timer-label">Ends in:</span>
+          <div class="flash-timer-digits">
+            <span class="flash-timer-digit">08</span>
+            <span class="flash-timer-digit">42</span>
+            <span class="flash-timer-digit">15</span>
+          </div>
+        </div>
+      </div>
+      <div class="product-grid" id="deals-grid">
+        <!-- Rendered by JS -->
+      </div>
+      <div style="text-align: center; margin-top: var(--space-8);">
+        <a href="offers.html" class="btn btn-accent btn-lg">View All Offers →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       FEATURED PRODUCTS
+       ============================================ -->
+  <section class="featured-section section" id="featured">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">⭐ Customer Favourites</div>
+        <h2>Featured <span class="text-gradient">Products</span></h2>
+        <p>The most loved products by our customers in Villupuram</p>
+      </div>
+      <div class="product-grid" id="featured-grid">
+        <!-- Rendered by JS -->
+      </div>
+      <div style="text-align: center; margin-top: var(--space-8);">
+        <a href="products.html" class="btn btn-primary btn-lg">View All Products →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       WHY CHOOSE US
+       ============================================ -->
+  <section class="why-us-section section" id="why-us">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">Why Kamala Supermarket?</div>
+        <h2>Why Villupuram <span class="text-gradient">Trusts Us</span></h2>
+        <p>15+ years of serving fresh, affordable groceries to thousands of families</p>
+      </div>
+      <div class="grid grid-4 gap-6">
+        <div class="feature-card reveal">
+          <div class="feature-icon">🌿</div>
+          <div class="feature-title">Farm Fresh Daily</div>
+          <div class="feature-desc">Vegetables and fruits sourced directly from local farms every morning. Always fresh, always quality.</div>
+        </div>
+        <div class="feature-card reveal reveal-delay-1">
+          <div class="feature-icon">💰</div>
+          <div class="feature-title">Best Prices</div>
+          <div class="feature-desc">We guarantee the lowest prices in Villupuram. If you find it cheaper elsewhere, we'll match it!</div>
+        </div>
+        <div class="feature-card reveal reveal-delay-2">
+          <div class="feature-icon">🚚</div>
+          <div class="feature-title">Fast Delivery</div>
+          <div class="feature-desc">Same-day delivery across Villupuram. Order before 2 PM and get your groceries by evening!</div>
+        </div>
+        <div class="feature-card reveal reveal-delay-3">
+          <div class="feature-icon">💬</div>
+          <div class="feature-title">WhatsApp Ordering</div>
+          <div class="feature-desc">Just send a message on WhatsApp! No apps to download, no forms to fill. It's that simple.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       HOW TO ORDER — 3 Steps
+       ============================================ -->
+  <section class="section" id="how-to-order" style="background: var(--color-white);">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">Simple & Easy</div>
+        <h2>Order in <span class="text-gradient-accent">3 Simple Steps</span></h2>
+      </div>
+      <div class="order-steps">
+        <div class="order-step reveal">
+          <div class="step-number">1</div>
+          <div class="step-icon">🛒</div>
+          <h4>Browse & Select</h4>
+          <p>Browse our products online or tell us what you need on WhatsApp</p>
+        </div>
+        <div class="order-step reveal reveal-delay-1">
+          <div class="step-number">2</div>
+          <div class="step-icon">💬</div>
+          <h4>Order via WhatsApp</h4>
+          <p>Click "Order on WhatsApp" — your order is sent automatically. We confirm in minutes!</p>
+        </div>
+        <div class="order-step reveal reveal-delay-2">
+          <div class="step-number">3</div>
+          <div class="step-icon">🚚</div>
+          <h4>Get It Delivered</h4>
+          <p>We deliver to your door same-day. Pay on delivery — cash, UPI, or card!</p>
+        </div>
+      </div>
+      <div style="text-align: center;">
+        <a href="https://wa.me/919876543210?text=Hi%20Kamala%20Supermarket!%20I%20want%20to%20place%20an%20order." 
+           target="_blank" class="btn btn-whatsapp btn-xl">
+          💬 Start Ordering on WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       TESTIMONIALS
+       ============================================ -->
+  <section class="testimonials-section section" id="testimonials">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">Customer Love ❤️</div>
+        <h2>What Our Customers <span class="text-gradient">Say</span></h2>
+        <p>Join 5,000+ happy families who trust Kamala Supermarket</p>
+      </div>
+      <div class="testimonial-grid">
+        <div class="testimonial-card reveal">
+          <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+          <div class="quote-icon">"</div>
+          <div class="testimonial-text">Best supermarket in Villupuram! The vegetables are always fresh and prices are very reasonable. WhatsApp ordering is so convenient — I order every week!</div>
+          <div class="testimonial-author">
+            <div class="author-avatar">R</div>
+            <div>
+              <div class="author-name">Rajesh Kumar</div>
+              <div class="author-location">Anna Nagar, Villupuram</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal reveal-delay-1">
+          <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+          <div class="quote-icon">"</div>
+          <div class="testimonial-text">I switched from BigBasket to Kamala Supermarket and never looked back. Products are fresher, delivery is faster, and the prices beat every online app!</div>
+          <div class="testimonial-author">
+            <div class="author-avatar">P</div>
+            <div>
+              <div class="author-name">Priya Lakshmi</div>
+              <div class="author-location">Gandhi Nagar, Villupuram</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal reveal-delay-2">
+          <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+          <div class="quote-icon">"</div>
+          <div class="testimonial-text">We order monthly grocery bundles from Kamala Supermarket for our restaurant. Bulk prices are excellent and delivery is always on time. Highly recommended!</div>
+          <div class="testimonial-author">
+            <div class="author-avatar">M</div>
+            <div>
+              <div class="author-name">Murugan S</div>
+              <div class="author-location">Bus Stand Area, Villupuram</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       STATS BAR
+       ============================================ -->
+  <section class="stats-bar section-sm" id="stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-card reveal">
+          <div class="stat-number" data-count="15" data-suffix="+">0+</div>
+          <div class="stat-label">Years in Business</div>
+        </div>
+        <div class="stat-card reveal reveal-delay-1">
+          <div class="stat-number" data-count="500" data-suffix="+">0+</div>
+          <div class="stat-label">Products Available</div>
+        </div>
+        <div class="stat-card reveal reveal-delay-2">
+          <div class="stat-number" data-count="5000" data-suffix="+">0+</div>
+          <div class="stat-label">Happy Customers</div>
+        </div>
+        <div class="stat-card reveal reveal-delay-3">
+          <div class="stat-number" data-count="50" data-suffix="+">0+</div>
+          <div class="stat-label">Delivery Areas</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       CTA SECTION
+       ============================================ -->
+  <section class="cta-section section" id="cta">
+    <div class="container" style="position: relative; z-index: 1;">
+      <h2>Ready to Order Your Groceries?</h2>
+      <p>Join thousands of families in Villupuram who save time and money by ordering from Kamala Supermarket. Free delivery on orders above ₹500!</p>
+      <div class="cta-actions">
+        <a href="https://wa.me/919876543210?text=Hi%20Kamala%20Supermarket!%20I%20want%20to%20place%20an%20order." 
+           target="_blank" class="btn btn-whatsapp btn-xl">
+          💬 Order on WhatsApp
+        </a>
+        <a href="tel:+919876543210" class="btn btn-outline-white btn-xl">
+          📞 Call Us Now
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       FOOTER
+       ============================================ -->
+  <footer class="footer" id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo-text">Kamala <span>Supermarket</span></div>
+          <p>Villupuram's most trusted supermarket for fresh groceries, dairy, snacks, and household essentials. Serving families since 2010 with the best quality and prices.</p>
+          <div class="footer-social">
+            <a href="#" title="Facebook">📘</a>
+            <a href="#" title="Instagram">📸</a>
+            <a href="#" title="YouTube">▶️</a>
+            <a href="https://wa.me/919876543210" title="WhatsApp">💬</a>
+          </div>
+        </div>
+        <div class="footer-column">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">→ Home</a></li>
+            <li><a href="about.html">→ About Us</a></li>
+            <li><a href="products.html">→ All Products</a></li>
+            <li><a href="offers.html">→ Offers & Deals</a></li>
+            <li><a href="order-online.html">→ Order Online</a></li>
+            <li><a href="contact.html">→ Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Categories</h4>
+          <ul>
+            <li><a href="vegetables-fruits.html">→ Vegetables & Fruits</a></li>
+            <li><a href="dairy-eggs.html">→ Dairy & Eggs</a></li>
+            <li><a href="rice-dals-grains.html">→ Rice, Dals & Grains</a></li>
+            <li><a href="snacks-beverages.html">→ Snacks & Beverages</a></li>
+            <li><a href="household-cleaning.html">→ Household & Cleaning</a></li>
+            <li><a href="monthly-bundles.html">→ Monthly Bundles</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="tel:+919876543210">📞 +91 98765 43210</a></li>
+            <li><a href="https://wa.me/919876543210">💬 WhatsApp Order</a></li>
+            <li><a href="mailto:info@kamalasupermarket.in">✉️ Email Us</a></li>
+            <li>📍 Main Road, Villupuram,<br>&nbsp;&nbsp;&nbsp;&nbsp; Tamil Nadu 605602</li>
+            <li>🕐 Mon–Sat: 7 AM – 10 PM<br>&nbsp;&nbsp;&nbsp;&nbsp; Sun: 8 AM – 9 PM</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 Kamala Supermarket, Villupuram. All rights reserved.</span>
+        <span>
+          <a href="privacy-policy.html">Privacy Policy</a> · 
+          <a href="privacy-policy.html">Terms</a> · 
+          Built by <a href="https://ideamanifest.com" target="_blank">IdeaManifest</a>
+        </span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================
+       Cart Sidebar
+       ============================================ -->
+  <div class="cart-overlay" id="cart-overlay"></div>
+  <div class="cart-sidebar" id="cart-sidebar">
+    <div class="cart-sidebar-header">
+      <h3>🛒 Your Cart</h3>
+      <button class="cart-sidebar-close" id="cart-close">✕</button>
+    </div>
+    <div class="cart-sidebar-body" id="cart-body">
+      <div class="cart-empty">
+        <div class="empty-icon">🛒</div>
+        <h4>Your cart is empty</h4>
+        <p>Browse our products and add items to your cart</p>
+      </div>
+    </div>
+    <div class="cart-sidebar-footer" id="cart-footer" style="display:none;">
+      <div class="cart-total">
+        <span class="cart-total-label">Total</span>
+        <span class="cart-total-price">₹0</span>
+      </div>
+      <p class="cart-savings" style="font-size: 0.8rem; color: var(--color-success); margin-bottom: 12px; font-weight: 600;"></p>
+      <button class="btn btn-whatsapp btn-lg" onclick="Cart.orderViaWhatsApp()" style="margin-bottom: 8px;">
+        💬 Order via WhatsApp
+      </button>
+      <button class="btn btn-ghost btn-sm" onclick="Cart.clear()" style="width: 100%; color: var(--color-gray-400);">
+        Clear Cart
+      </button>
+    </div>
+  </div>
+
+  <!-- ============================================
+       Floating WhatsApp Button
+       ============================================ -->
+  <div class="whatsapp-float">
+    <span class="float-label">Need help? Chat with us!</span>
+    <a href="https://wa.me/919876543210?text=Hi%20Kamala%20Supermarket!" 
+       target="_blank" class="float-btn" title="Chat on WhatsApp">💬</a>
+  </div>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" id="back-to-top" title="Back to top">↑</button>
+
+  <!-- ============================================
+       Scripts
+       ============================================ -->
+  <script src="js/main.js"></script>
+  <script src="js/whatsapp.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/products.js"></script>
+  <script>
+    // Initialize home page
+    document.addEventListener('DOMContentLoaded', async () => {
+      // Load products
+      await Products.loadProducts();
+      
+      // Render categories
+      Products.renderCategories('category-grid');
+
+      // Render flash deals
+      const deals = Products.getDeals();
+      Products.renderGrid(deals, 'deals-grid');
+
+      // Render featured products
+      const featured = Products.getFeatured();
+      Products.renderGrid(featured, 'featured-grid');
+
+      // Init search modal
+      Products.initSearchModal();
+
+      // Init flash timer
+      if (typeof initFlashTimer === 'function') initFlashTimer();
+    });
+  </script>
+</body>
+</html>
