@@ -223,6 +223,142 @@
   font-size: var(--text-xl);
 }
 
+/* Premium Real Image Icon Styles */
+.nav-icon-img {
+  width: 22px !important;
+  height: 22px !important;
+  max-width: 22px !important;
+  max-height: 22px !important;
+  flex-shrink: 0 !important;
+  object-fit: contain !important;
+  vertical-align: middle;
+  transition: transform var(--transition-fast) ease;
+  pointer-events: none; /* ensures clicks go through to the button */
+}
+
+.nav-search-btn:hover .nav-icon-img,
+.nav-cart-btn:hover .nav-icon-img {
+  transform: scale(1.1);
+}
+
+.wa-nav-icon {
+  width: 20px !important;
+  height: 20px !important;
+  max-width: 20px !important;
+  max-height: 20px !important;
+  margin-right: 6px !important;
+  flex-shrink: 0 !important;
+  object-fit: contain !important;
+  filter: brightness(0) invert(1) !important; /* White WhatsApp icon inside green nav CTA */
+}
+
+/* Button & Action Icon Styles */
+.btn-wa-icon-img {
+  width: 20px !important;
+  height: 20px !important;
+  max-width: 20px !important;
+  max-height: 20px !important;
+  flex-shrink: 0 !important;
+  object-fit: contain !important;
+  vertical-align: middle;
+  margin-right: 8px !important;
+  filter: brightness(0) invert(1) !important; /* Pure white WhatsApp icon inside green action buttons */
+  pointer-events: none;
+}
+
+/* Floating Help Button Icon */
+.float-btn-icon-img {
+  width: 32px !important;
+  height: 32px !important;
+  max-width: 32px !important;
+  max-height: 32px !important;
+  flex-shrink: 0 !important;
+  object-fit: contain !important;
+  vertical-align: middle;
+  filter: brightness(0) invert(1) !important; /* Pure white icon inside floating green button */
+  pointer-events: none;
+}
+
+/* Footer Social Icon Styles */
+.footer-social-wa-img {
+  width: 20px !important;
+  height: 20px !important;
+  max-width: 20px !important;
+  max-height: 20px !important;
+  flex-shrink: 0 !important;
+  object-fit: contain !important;
+  vertical-align: middle;
+  filter: grayscale(1) brightness(0.8) !important; /* Elegant gray WhatsApp icon to match other social links */
+  transition: all var(--transition-fast) ease;
+  pointer-events: none;
+}
+
+.footer-social a:hover .footer-social-wa-img {
+  filter: brightness(0) invert(1) !important; /* Pop to white on hover */
+}
+
+/* Search Modal Input Icon */
+.search-bar-icon-img {
+  position: absolute !important;
+  left: 20px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  width: 18px !important;
+  height: 18px !important;
+  max-width: 18px !important;
+  max-height: 18px !important;
+  flex-shrink: 0 !important;
+  object-fit: contain !important;
+  pointer-events: none;
+  filter: grayscale(1) !important;
+  opacity: 0.5 !important;
+  z-index: 10;
+}
+
+/* Bootstrap Icon sizing in nav buttons */
+.nav-search-btn .bi,
+.nav-cart-btn .bi {
+  font-size: 1.15rem;
+  line-height: 1;
+}
+
+/* WhatsApp nav button icon */
+.nav-whatsapp-btn .bi {
+  font-size: 1.1rem;
+}
+
+/* Footer social icons */
+.footer-social .bi {
+  font-size: 1.2rem;
+}
+
+/* Footer contact WhatsApp icon */
+.footer-column .bi-whatsapp {
+  margin-right: 4px;
+}
+
+/* Floating WhatsApp button icon */
+.float-btn .bi {
+  font-size: 1.75rem;
+  color: white;
+  line-height: 1;
+}
+
+/* Search bar icon */
+.search-icon .bi,
+.search-bar .bi {
+  font-size: 1.1rem;
+  color: var(--color-gray-400);
+}
+
+/* Search modal icon */
+.search-modal .bi {
+  font-size: 1.25rem;
+  color: var(--color-gray-400);
+  margin-right: 8px;
+  flex-shrink: 0;
+}
+
 /* Nav actions */
 .nav-actions {
   display: flex;
@@ -1156,6 +1292,7 @@
   cursor: pointer;
   border: none;
   text-decoration: none;
+  overflow: hidden;
 }
 
 .whatsapp-float .float-btn:hover {

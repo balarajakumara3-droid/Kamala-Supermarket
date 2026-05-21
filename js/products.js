@@ -47,15 +47,15 @@ const Products = {
     }
 
     // Price range filter
-    products = products.filter(p => 
-      p.price >= this.currentFilters.priceRange[0] && 
+    products = products.filter(p =>
+      p.price >= this.currentFilters.priceRange[0] &&
       p.price <= this.currentFilters.priceRange[1]
     );
 
     // Search filter
     if (this.currentFilters.search) {
       const query = this.currentFilters.search.toLowerCase();
-      products = products.filter(p => 
+      products = products.filter(p =>
         p.name.toLowerCase().includes(query) ||
         p.brand.toLowerCase().includes(query) ||
         p.category.toLowerCase().includes(query) ||
@@ -142,8 +142,8 @@ const Products = {
 
   // Render a single product card HTML
   renderCard(product) {
-    const discount = product.mrp > product.price 
-      ? Math.round(((product.mrp - product.price) / product.mrp) * 100) 
+    const discount = product.mrp > product.price
+      ? Math.round(((product.mrp - product.price) / product.mrp) * 100)
       : 0;
 
     return `
@@ -197,7 +197,7 @@ const Products = {
     }
 
     container.innerHTML = products.map(p => this.renderCard(p)).join('');
-    
+
     // Re-init scroll animations for new elements
     const reveals = container.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
@@ -325,7 +325,7 @@ const Products = {
   initSearchModal() {
     const input = document.querySelector('.search-modal input');
     const results = document.querySelector('.search-results');
-    
+
     if (!input || !results) return;
 
     let debounce;
@@ -339,7 +339,7 @@ const Products = {
         }
 
         const matches = this.search(query).slice(0, 8);
-        
+
         if (matches.length === 0) {
           results.innerHTML = '<p style="text-align:center; padding:20px; color:var(--color-gray-400);">No products found</p>';
           return;
