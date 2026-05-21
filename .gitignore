@@ -1,0 +1,4 @@
+node_modules/
+checkout_*.png
+.DS_Store
+*.log
