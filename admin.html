@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Admin Panel — Kamala Supermarket</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --navy:#0a1628;
+  --navy2:#111f38;
+  --green:#16a34a;
+  --green-light:#dcfce7;
+  --green-dark:#14532d;
+  --blue:#1d4ed8;
+  --blue-light:#dbeafe;
+  --amber:#d97706;
+  --amber-light:#fef3c7;
+  --red:#dc2626;
+  --red-light:#fee2e2;
+  --purple:#7c3aed;
+  --purple-light:#ede9fe;
+  --teal:#0d9488;
+  --teal-light:#ccfbf1;
+  --border:#e2e8f0;
+  --text:#0f172a;
+  --text2:#475569;
+  --text3:#94a3b8;
+  --bg:#f8fafc;
+  --white:#ffffff;
+  --sidebar-w:240px;
+}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.5}
+
+/* ── LOGIN ── */
+#login-screen{display:flex;align-items:center;justify-content:center;min-height:100vh;background:var(--navy);position:fixed;inset:0;z-index:1000;transition:opacity .4s}
+#login-screen.hide{opacity:0;pointer-events:none}
+.login-card{background:var(--white);border-radius:16px;padding:2.5rem;width:100%;max-width:380px;box-shadow:0 25px 60px rgba(0,0,0,.4)}
+.login-logo{text-align:center;margin-bottom:1.5rem}
+.login-logo .logo-circle{width:60px;height:60px;background:var(--green);border-radius:14px;display:inline-flex;align-items:center;justify-content:center;font-size:22px;font-weight:700;color:#fff;margin-bottom:.75rem}
+.login-logo h2{font-size:18px;font-weight:700;color:var(--text)}
+.login-logo p{font-size:13px;color:var(--text2);margin-top:2px}
+.login-card label{display:block;font-size:12px;font-weight:600;color:var(--text2);margin-bottom:5px;text-transform:uppercase;letter-spacing:.5px}
+.login-card input{width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;font-family:'DM Sans',sans-serif;outline:none;transition:border .2s;margin-bottom:1rem}
+.login-card input:focus{border-color:var(--green)}
+.login-btn{width:100%;padding:11px;background:var(--green);color:#fff;border:none;border-radius:8px;font-size:15px;font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer;transition:background .2s;margin-top:.25rem}
+.login-btn:hover{background:#15803d}
+.login-err{color:var(--red);font-size:12px;text-align:center;margin-top:.75rem;display:none}
+
+/* ── LAYOUT ── */
+#app{display:none;min-height:100vh}
+#app.show{display:flex}
+
+/* ── SIDEBAR ── */
+.sidebar{width:var(--sidebar-w);background:var(--navy);display:flex;flex-direction:column;position:fixed;top:0;left:0;height:100vh;z-index:100;transition:transform .3s}
+.sidebar-header{padding:1.25rem 1.25rem 1rem;border-bottom:1px solid rgba(255,255,255,.08)}
+.sidebar-brand{display:flex;align-items:center;gap:10px}
+.brand-icon{width:36px;height:36px;background:var(--green);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#fff;flex-shrink:0}
+.brand-name{font-size:14px;font-weight:700;color:#fff;line-height:1.2}
+.brand-sub{font-size:11px;color:rgba(255,255,255,.45)}
+.sidebar-nav{flex:1;padding:1rem 0;overflow-y:auto}
+.nav-section{font-size:10px;font-weight:600;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:1px;padding:0 1.25rem;margin:1rem 0 .4rem}
+.nav-item{display:flex;align-items:center;gap:10px;padding:.6rem 1.25rem;cursor:pointer;transition:all .15s;color:rgba(255,255,255,.6);font-size:13.5px;font-weight:500;border-left:3px solid transparent}
+.nav-item:hover{background:rgba(255,255,255,.06);color:#fff}
+.nav-item.active{background:rgba(22,163,74,.15);color:var(--green);border-left-color:var(--green)}
+.nav-item svg{width:16px;height:16px;flex-shrink:0}
+.nav-badge{margin-left:auto;background:var(--red);color:#fff;font-size:10px;font-weight:700;padding:1px 6px;border-radius:10px}
+.sidebar-footer{padding:1rem 1.25rem;border-top:1px solid rgba(255,255,255,.08)}
+.logout-btn{display:flex;align-items:center;gap:8px;color:rgba(255,255,255,.5);font-size:13px;cursor:pointer;transition:color .15s}
+.logout-btn:hover{color:#fff}
+
+/* ── MAIN ── */
+.main{margin-left:var(--sidebar-w);flex:1;display:flex;flex-direction:column;min-height:100vh}
+.topbar{background:var(--white);border-bottom:1px solid var(--border);padding:.875rem 1.5rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50}
+.topbar-left{display:flex;align-items:center;gap:.75rem}
+.topbar-left h1{font-size:16px;font-weight:700;color:var(--text)}
+.topbar-left span{font-size:13px;color:var(--text3)}
+.topbar-right{display:flex;align-items:center;gap:.75rem}
+.admin-pill{display:flex;align-items:center;gap:8px;background:var(--bg);border:1px solid var(--border);border-radius:20px;padding:5px 12px 5px 5px;font-size:12px;font-weight:600;color:var(--text2)}
+.admin-avatar{width:26px;height:26px;background:var(--green);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff}
+.content{padding:1.5rem;flex:1}
+
+/* ── STAT CARDS ── */
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:1.5rem}
+.stat-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;position:relative;overflow:hidden}
+.stat-card::before{content:'';position:absolute;top:0;right:0;width:60px;height:60px;border-radius:0 12px 0 60px;opacity:.08}
+.stat-card.green::before{background:var(--green)}
+.stat-card.blue::before{background:var(--blue)}
+.stat-card.amber::before{background:var(--amber)}
+.stat-card.red::before{background:var(--red)}
+.stat-card.purple::before{background:var(--purple)}
+.stat-card.teal::before{background:var(--teal)}
+.stat-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:.75rem}
+.stat-icon.green{background:var(--green-light)}
+.stat-icon.blue{background:var(--blue-light)}
+.stat-icon.amber{background:var(--amber-light)}
+.stat-icon.red{background:var(--red-light)}
+.stat-icon.purple{background:var(--purple-light)}
+.stat-icon.teal{background:var(--teal-light)}
+.stat-icon svg{width:18px;height:18px}
+.stat-icon.green svg{stroke:var(--green)}
+.stat-icon.blue svg{stroke:var(--blue)}
+.stat-icon.amber svg{stroke:var(--amber)}
+.stat-icon.red svg{stroke:var(--red)}
+.stat-icon.purple svg{stroke:var(--purple)}
+.stat-icon.teal svg{stroke:var(--teal)}
+.stat-val{font-size:22px;font-weight:700;color:var(--text);margin-bottom:2px}
+.stat-label{font-size:12px;color:var(--text2)}
+
+/* ── FILTERS ── */
+.filter-bar{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1rem;margin-bottom:1rem;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.search-wrap{position:relative;flex:1;min-width:200px}
+.search-wrap svg{position:absolute;left:10px;top:50%;transform:translateY(-50%);width:15px;height:15px;stroke:var(--text3)}
+.filter-bar input{width:100%;padding:8px 10px 8px 32px;border:1px solid var(--border);border-radius:8px;font-size:13px;font-family:'DM Sans',sans-serif;outline:none;transition:border .2s;color:var(--text)}
+.filter-bar input:focus{border-color:var(--green)}
+.filter-bar select{padding:8px 12px;border:1px solid var(--border);border-radius:8px;font-size:13px;font-family:'DM Sans',sans-serif;outline:none;color:var(--text);background:var(--white);cursor:pointer}
+.filter-bar select:focus{border-color:var(--green)}
+
+/* ── TABS ── */
+.tabs-wrap{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:1rem}
+.tab{padding:6px 14px;border-radius:8px;border:1px solid var(--border);background:var(--white);color:var(--text2);font-size:13px;font-weight:500;font-family:'DM Sans',sans-serif;cursor:pointer;transition:all .15s}
+.tab:hover{border-color:var(--green);color:var(--green)}
+.tab.active{background:var(--green);color:#fff;border-color:var(--green)}
+.tab .cnt{opacity:.75;font-size:11px;margin-left:4px}
+
+/* ── TABLE ── */
+.table-card{background:var(--white);border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:13px}
+thead th{background:var(--bg);padding:10px 14px;text-align:left;font-weight:600;color:var(--text2);border-bottom:1px solid var(--border);white-space:nowrap}
+tbody td{padding:11px 14px;border-bottom:1px solid var(--border);vertical-align:middle}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover td{background:#f8fafc}
+.order-id{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--blue);font-weight:500}
+.cust-name{font-weight:600;color:var(--text)}
+.cust-phone{font-size:12px;color:var(--text2)}
+.date-cell{font-size:12px;color:var(--text);line-height:1.6}
+.date-cell span{color:var(--text3)}
+.amount{font-weight:700;color:var(--text)}
+
+/* ── BADGES ── */
+.badge{display:inline-block;font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;white-space:nowrap}
+.badge.pending{background:var(--amber-light);color:var(--amber)}
+.badge.processing{background:var(--blue-light);color:var(--blue)}
+.badge.delivery{background:var(--teal-light);color:var(--teal)}
+.badge.delivered{background:var(--green-light);color:var(--green-dark)}
+.badge.cancelled{background:var(--red-light);color:var(--red)}
+.badge.paid{background:var(--green-light);color:var(--green-dark)}
+.badge.unpaid{background:var(--amber-light);color:var(--amber)}
+
+/* ── ACTION BUTTONS ── */
+.action-btns{display:flex;gap:5px}
+.act{padding:5px 10px;border-radius:6px;border:1px solid var(--border);background:var(--white);cursor:pointer;font-size:12px;font-weight:500;font-family:'DM Sans',sans-serif;color:var(--text2);transition:all .15s;display:flex;align-items:center;gap:4px}
+.act:hover{background:var(--bg)}
+.act.view{color:var(--blue);border-color:#bfdbfe}
+.act.view:hover{background:var(--blue-light)}
+.act.edit{color:var(--amber);border-color:#fde68a}
+.act.edit:hover{background:var(--amber-light)}
+.act.del{color:var(--red);border-color:#fecaca}
+.act.del:hover{background:var(--red-light)}
+.act svg{width:13px;height:13px;stroke:currentColor}
+
+/* ── PAGINATION ── */
+.pagination{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-top:1px solid var(--border)}
+.pg-info{font-size:12px;color:var(--text2)}
+.pg-btns{display:flex;gap:5px}
+.pg-btn{padding:5px 10px;border-radius:6px;border:1px solid var(--border);background:var(--white);font-size:13px;font-family:'DM Sans',sans-serif;cursor:pointer;color:var(--text2);transition:all .15s}
+.pg-btn:hover{border-color:var(--green);color:var(--green)}
+.pg-btn.active{background:var(--green);color:#fff;border-color:var(--green)}
+.pg-btn:disabled{opacity:.4;cursor:not-allowed}
+
+/* ── MODAL ── */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:500;align-items:center;justify-content:center;padding:1rem}
+.modal-overlay.open{display:flex}
+.modal{background:var(--white);border-radius:16px;width:100%;max-width:600px;max-height:90vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.modal-header{padding:1.25rem 1.5rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:var(--white);z-index:10}
+.modal-header h3{font-size:16px;font-weight:700;color:var(--text)}
+.modal-header .order-id-tag{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--blue);background:var(--blue-light);padding:3px 8px;border-radius:6px;margin-left:.5rem}
+.close-x{width:30px;height:30px;border:none;background:var(--bg);border-radius:6px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--text2);transition:all .15s}
+.close-x:hover{background:var(--red-light);color:var(--red)}
+.modal-body{padding:1.25rem 1.5rem}
+.modal-section{margin-bottom:1.25rem}
+.modal-section-title{font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.8px;margin-bottom:.75rem}
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.info-field label{font-size:11px;color:var(--text3);display:block;margin-bottom:3px}
+.info-field span{font-size:13px;font-weight:600;color:var(--text)}
+.info-field.full{grid-column:1/-1}
+.timeline{display:flex;align-items:center;gap:0;flex-wrap:wrap;gap:4px;margin-bottom:.5rem}
+.tl-step{font-size:11px;font-weight:600;padding:4px 10px;border-radius:20px;background:var(--bg);color:var(--text3);border:1px solid var(--border)}
+.tl-step.done{background:var(--green-light);color:var(--green-dark);border-color:#86efac}
+.tl-step.current{background:var(--blue-light);color:var(--blue);border-color:#93c5fd}
+.tl-step.skip{background:var(--red-light);color:var(--red);border-color:#fca5a5}
+.tl-arr{color:var(--text3);font-size:12px}
+.items-table{width:100%;border-collapse:collapse;font-size:13px;border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.items-table th{background:var(--bg);padding:8px 12px;text-align:left;font-weight:600;color:var(--text2);border-bottom:1px solid var(--border)}
+.items-table td{padding:9px 12px;border-bottom:1px solid var(--border);color:var(--text)}
+.items-table tr:last-child td{border-bottom:none}
+.totals-box{border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.total-row{display:flex;justify-content:space-between;padding:8px 14px;font-size:13px;color:var(--text2);border-bottom:1px solid var(--border)}
+.total-row:last-child{border-bottom:none}
+.total-row.grand{font-size:15px;font-weight:700;color:var(--text);background:var(--bg)}
+.modal-footer{padding:1rem 1.5rem;border-top:1px solid var(--border);display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.modal-footer select{padding:8px 12px;border:1px solid var(--border);border-radius:8px;font-size:13px;font-family:'DM Sans',sans-serif;outline:none;color:var(--text);flex:1;min-width:160px}
+.modal-footer select:focus{border-color:var(--green)}
+.btn-update{padding:8px 16px;background:var(--green);color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer;transition:background .2s}
+.btn-update:hover{background:#15803d}
+.btn-print{padding:8px 14px;background:var(--white);color:var(--text2);border:1px solid var(--border);border-radius:8px;font-size:13px;font-weight:500;font-family:'DM Sans',sans-serif;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:6px}
+.btn-print:hover{background:var(--bg)}
+.btn-print svg{width:14px;height:14px;stroke:currentColor}
+
+/* ── EMPTY ── */
+.empty-state{text-align:center;padding:3rem 1rem;color:var(--text3)}
+.empty-state svg{width:40px;height:40px;stroke:var(--text3);margin-bottom:.75rem}
+.empty-state p{font-size:14px}
+
+/* ── TOAST ── */
+.toast{position:fixed;bottom:1.5rem;right:1.5rem;background:var(--navy);color:#fff;padding:.75rem 1.25rem;border-radius:10px;font-size:13px;font-weight:500;z-index:9999;opacity:0;transform:translateY(10px);transition:all .3s;pointer-events:none}
+.toast.show{opacity:1;transform:translateY(0)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+  .sidebar{transform:translateX(-100%)}
+  .sidebar.open{transform:translateX(0)}
+  .main{margin-left:0}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .info-grid{grid-template-columns:1fr}
+  .topbar .menu-btn{display:flex}
+}
+.menu-btn{display:none;width:34px;height:34px;border:1px solid var(--border);border-radius:8px;background:var(--white);cursor:pointer;align-items:center;justify-content:center}
+.menu-btn svg{width:18px;height:18px;stroke:var(--text2)}
+.overlay-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:99}
+.overlay-bg.open{display:block}
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="login-screen">
+  <div class="login-card">
+    <div class="login-logo">
+      <div class="logo-circle">KS</div>
+      <h2>Kamala Supermarket</h2>
+      <p>Admin Panel — Villupuram</p>
+    </div>
+    <label for="u-input">Username</label>
+    <input type="text" id="u-input" placeholder="Enter username" autocomplete="off"/>
+    <label for="p-input">Password</label>
+    <input type="password" id="p-input" placeholder="Enter password" onkeydown="if(event.key==='Enter')doLogin()"/>
+    <button class="login-btn" onclick="doLogin()">Sign in to Admin</button>
+    <div class="login-err" id="login-err">Incorrect username or password. Try again.</div>
+    <p style="font-size:11px;color:#94a3b8;text-align:center;margin-top:1rem">Default: admin / kamala2024</p>
+  </div>
+</div>
+
+<!-- SIDEBAR OVERLAY (mobile) -->
+<div class="overlay-bg" id="overlay-bg" onclick="closeSidebar()"></div>
+
+<!-- APP -->
+<div id="app">
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-brand">
+        <div class="brand-icon">KS</div>
+        <div>
+          <div class="brand-name">Kamala Supermarket</div>
+          <div class="brand-sub">Admin Panel</div>
+        </div>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-section">Main</div>
+      <div class="nav-item active" onclick="showSection('orders')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+        Orders
+        <span class="nav-badge" id="pending-badge">0</span>
+      </div>
+      <div class="nav-section">Account</div>
+      <div class="nav-item" onclick="changePassword()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+        Change Password
+      </div>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="logout-btn" onclick="doLogout()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9"/></svg>
+        Sign out
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+    <div class="topbar">
+      <div class="topbar-left">
+        <button class="menu-btn" onclick="toggleSidebar()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+        <div>
+          <h1 id="page-title">Order Management</h1>
+          <span id="page-date"></span>
+        </div>
+      </div>
+      <div class="topbar-right">
+        <div class="admin-pill">
+          <div class="admin-avatar">A</div>
+          Admin
+        </div>
+      </div>
+    </div>
+
+    <div class="content">
+      <!-- STATS -->
+      <div class="stats-grid" id="stats-grid"></div>
+
+      <!-- FILTERS -->
+      <div class="filter-bar">
+        <div class="search-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" id="search-input" placeholder="Search by Order ID or customer name..."/>
+        </div>
+        <select id="filter-date">
+          <option value="all">All dates</option>
+          <option value="today" selected>Today</option>
+          <option value="week">This week</option>
+          <option value="month">This month</option>
+        </select>
+        <select id="filter-pay">
+          <option value="all">All payment</option>
+          <option value="UPI">UPI</option>
+          <option value="Cash">Cash</option>
+          <option value="Card">Card</option>
+        </select>
+        <select id="filter-paid">
+          <option value="all">All status</option>
+          <option value="paid">Paid</option>
+          <option value="unpaid">Unpaid</option>
+        </select>
+      </div>
+
+      <!-- TABS -->
+      <div class="tabs-wrap" id="tabs-wrap"></div>
+
+      <!-- TABLE -->
+      <div class="table-card">
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Order ID</th>
+                <th>Customer</th>
+                <th>Date & Time</th>
+                <th>Items</th>
+                <th>Amount</th>
+                <th>Payment</th>
+                <th>Paid</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="orders-tbody"></tbody>
+          </table>
+        </div>
+        <div id="empty-state" class="empty-state" style="display:none">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+          <p>No orders found</p>
+        </div>
+        <div class="pagination" id="pagination"></div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- ORDER DETAIL MODAL -->
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal" id="modal-content"></div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script>
+// ── CREDENTIALS ──
+const ADMIN_USER = "admin";
+const ADMIN_PASS = "kamala2024";
+
+// ── DYNAMIC DATE RANGE GENERATION HELPERS ──
+const getTodayDateStr = () => new Date().toISOString().split('T')[0];
+const getYesterdayDateStr = () => {
+  const d = new Date();
+  d.setDate(d.getDate() - 1);
+  return d.toISOString().split('T')[0];
+};
+const getDaysAgoDateStr = (days) => {
+  const d = new Date();
+  d.setDate(d.getDate() - days);
+  return d.toISOString().split('T')[0];
+};
+
+// ── SAMPLE ORDERS ──
+let ORDERS = [
+  {id:"ORD-1001",name:"Priya Lakshmi",phone:"9876543210",email:"priya@gmail.com",address:"12, Gandhi Nagar, Villupuram 605602",date:getTodayDateStr(),time:"09:15 AM",items:[{n:"Toor Dal 1kg",qty:2,price:120},{n:"Sunflower Oil 1L",qty:1,price:145},{n:"Basmati Rice 5kg",qty:1,price:380}],delivery:40,discount:0,payment:"UPI",paid:true,status:"Delivered"},
+  {id:"ORD-1002",name:"Rajan Kumar",phone:"9865432100",email:"rajan@gmail.com",address:"45, Anna Salai, Villupuram 605602",date:getTodayDateStr(),time:"10:30 AM",items:[{n:"Atta 10kg",qty:1,price:420},{n:"Sugar 1kg",qty:2,price:52},{n:"Tea Powder 500g",qty:1,price:180},{n:"Biscuits Pack",qty:3,price:30}],delivery:0,discount:20,payment:"Cash",paid:true,status:"Processing"},
+  {id:"ORD-1003",name:"Meena Devi",phone:"9745678901",email:"meena@gmail.com",address:"7, Nehru Street, Tindivanam 604001",date:getTodayDateStr(),time:"11:00 AM",items:[{n:"Vegetables Bundle",qty:1,price:250},{n:"Curd 500ml",qty:2,price:40},{n:"Milk 1L",qty:3,price:58}],delivery:60,discount:0,payment:"UPI",paid:true,status:"Out for Delivery"},
+  {id:"ORD-1004",name:"Suresh Babu",phone:"9632587410",email:"suresh@gmail.com",address:"22, Market Road, Villupuram 605602",date:getTodayDateStr(),time:"11:45 AM",items:[{n:"Coconut Oil 500ml",qty:2,price:185},{n:"Mustard Seeds 200g",qty:1,price:45}],delivery:40,discount:0,payment:"Card",paid:true,status:"Pending"},
+  {id:"ORD-1005",name:"Kavitha S",phone:"9512346789",email:"kavitha@gmail.com",address:"3, Raja Street, Kallakurichi 606202",date:getTodayDateStr(),time:"12:20 PM",items:[{n:"Soap Pack x6",qty:1,price:210},{n:"Detergent 1kg",qty:2,price:160},{n:"Toothpaste 150g",qty:2,price:85},{n:"Shampoo 200ml",qty:1,price:145}],delivery:60,discount:50,payment:"UPI",paid:false,status:"Pending"},
+  {id:"ORD-1006",name:"Arjun Selvam",phone:"9871234560",email:"arjun@gmail.com",address:"88, Cuddalore Road, Villupuram 605602",date:getYesterdayDateStr(),time:"03:10 PM",items:[{n:"Chicken 1kg",qty:2,price:320},{n:"Onion 2kg",qty:1,price:60},{n:"Tomato 1kg",qty:1,price:45}],delivery:40,discount:0,payment:"Cash",paid:true,status:"Delivered"},
+  {id:"ORD-1007",name:"Divya R",phone:"9988776655",email:"divya@gmail.com",address:"15, Periyar Nagar, Villupuram 605602",date:getYesterdayDateStr(),time:"04:00 PM",items:[{n:"Rice 10kg",qty:1,price:580},{n:"Sambar Powder 100g",qty:2,price:45}],delivery:0,discount:0,payment:"UPI",paid:true,status:"Delivered"},
+  {id:"ORD-1008",name:"Murugan P",phone:"9123456789",email:"murugan@gmail.com",address:"60, Auroville Road, Cuddalore 607001",date:getYesterdayDateStr(),time:"05:30 PM",items:[{n:"Eggs Tray x30",qty:1,price:195},{n:"Butter 500g",qty:1,price:240},{n:"Cheese Slice Pack",qty:1,price:165}],delivery:60,discount:0,payment:"Card",paid:false,status:"Cancelled"},
+  {id:"ORD-1009",name:"Geetha M",phone:"9765432198",email:"geetha@gmail.com",address:"9, VGP Colony, Villupuram 605602",date:getDaysAgoDateStr(2),time:"08:45 AM",items:[{n:"Ragi Flour 1kg",qty:2,price:85},{n:"Jaggery 500g",qty:1,price:70},{n:"Groundnut Oil 1L",qty:1,price:195}],delivery:40,discount:0,payment:"UPI",paid:true,status:"Delivered"},
+  {id:"ORD-1010",name:"Senthil Nathan",phone:"9654321870",email:"senthil@gmail.com",address:"34, Bus Stand Road, Villupuram 605602",date:getDaysAgoDateStr(2),time:"10:00 AM",items:[{n:"Noodles 5 pack",qty:2,price:75},{n:"Ketchup 500g",qty:1,price:120},{n:"Juice 1L",qty:3,price:95}],delivery:40,discount:10,payment:"Cash",paid:true,status:"Processing"},
+  {id:"ORD-1011",name:"Anitha K",phone:"9845671230",email:"anitha@gmail.com",address:"19, Nehru Colony, Villupuram 605602",date:getTodayDateStr(),time:"02:00 PM",items:[{n:"Banana 12pcs",qty:1,price:60},{n:"Apple 1kg",qty:1,price:180},{n:"Grapes 500g",qty:1,price:90}],delivery:40,discount:0,payment:"UPI",paid:true,status:"Processing"},
+  {id:"ORD-1012",name:"Balachandran T",phone:"9786543219",email:"bala@gmail.com",address:"55, Lake View Nagar, Villupuram 605602",date:getTodayDateStr(),time:"08:00 AM",items:[{n:"Idly Rice 5kg",qty:1,price:280},{n:"Urad Dal 500g",qty:1,price:95},{n:"Fenugreek 100g",qty:1,price:30}],delivery:0,discount:0,payment:"Cash",paid:true,status:"Out for Delivery"},
+];
+
+const STATUSES = ["Pending","Processing","Out for Delivery","Delivered","Cancelled"];
+const TABS_LIST = ["All","Pending","Processing","Out for Delivery","Delivered","Cancelled"];
+let activeTab="All", searchQ="", filterDate="today", filterPay="all", filterPaid="all", page=1;
+const PER = 8;
+
+function getTotal(o){return o.items.reduce((a,i)=>a+i.qty*i.price,0)+o.delivery-o.discount;}
+
+// ── LOGIN ──
+function doLogin(){
+  const u=document.getElementById("u-input").value.trim();
+  const p=document.getElementById("p-input").value;
+  if(u===ADMIN_USER&&p===ADMIN_PASS){
+    document.getElementById("login-screen").classList.add("hide");
+    document.getElementById("app").classList.add("show");
+    document.getElementById("page-date").textContent=new Date().toLocaleDateString("en-IN",{weekday:"long",year:"numeric",month:"long",day:"numeric"});
+    renderAll();
+    setTimeout(()=>document.getElementById("login-screen").style.display="none",400);
+  } else {
+    document.getElementById("login-err").style.display="block";
+    document.getElementById("p-input").value="";
+  }
+}
+function doLogout(){
+  if(confirm("Sign out of admin panel?")){location.reload();}
+}
+function changePassword(){alert("To change password, open admin.html in a code editor and update ADMIN_USER and ADMIN_PASS variables at the top of the script.");}
+
+// ── SIDEBAR ──
+function toggleSidebar(){document.getElementById("sidebar").classList.toggle("open");document.getElementById("overlay-bg").classList.toggle("open");}
+function closeSidebar(){document.getElementById("sidebar").classList.remove("open");document.getElementById("overlay-bg").classList.remove("open");}
+function showSection(s){document.querySelectorAll(".nav-item").forEach(n=>n.classList.remove("active"));event.currentTarget.classList.add("active");closeSidebar();}
+
+// ── FILTER ──
+function filtered(){
+  const today=getTodayDateStr();
+  const week=[];
+  for(let i=0;i<7;i++) {
+    week.push(getDaysAgoDateStr(i));
+  }
+  return ORDERS.filter(o=>{
+    if(activeTab!=="All"&&o.status!==activeTab)return false;
+    if(searchQ&&!o.id.toLowerCase().includes(searchQ)&&!o.name.toLowerCase().includes(searchQ))return false;
+    if(filterDate==="today"&&o.date!==today)return false;
+    if(filterDate==="week"&&!week.includes(o.date))return false;
+    if(filterPay!=="all"&&o.payment!==filterPay)return false;
+    if(filterPaid==="paid"&&!o.paid)return false;
+    if(filterPaid==="unpaid"&&o.paid)return false;
+    return true;
+  });
+}
+
+// ── STATS ──
+function renderStats(){
+  const today=getTodayDateStr();
+  const tod=ORDERS.filter(o=>o.date===today);
+  const rev=tod.filter(o=>o.paid).reduce((a,o)=>a+getTotal(o),0);
+  const pending=ORDERS.filter(o=>o.status==="Pending").length;
+  document.getElementById("pending-badge").textContent=pending;
+  const stats=[
+    {label:"Today's orders",val:tod.length,color:"green",icon:'<path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>'},
+    {label:"Pending",val:pending,color:"amber",icon:'<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>'},
+    {label:"Processing",val:ORDERS.filter(o=>o.status==="Processing").length,color:"blue",icon:'<polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/>'},
+    {label:"Out for delivery",val:ORDERS.filter(o=>o.status==="Out for Delivery").length,color:"teal",icon:'<rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>'},
+    {label:"Delivered",val:ORDERS.filter(o=>o.status==="Delivered").length,color:"green",icon:'<polyline points="20 6 9 17 4 12"/>'},
+    {label:"Cancelled",val:ORDERS.filter(o=>o.status==="Cancelled").length,color:"red",icon:'<circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/>'},
+    {label:"Today's revenue",val:"₹"+rev.toLocaleString("en-IN"),color:"purple",icon:'<path d="M6 3h12M6 8h12M6 13h3a4 4 0 0 0 0-8H6M6 13l8.5 8"/>'},
+  ];
+  document.getElementById("stats-grid").innerHTML=stats.map(s=>`
+    <div class="stat-card ${s.color}">
+      <div class="stat-icon ${s.color}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">${s.icon}</svg></div>
+      <div class="stat-val">${s.val}</div>
+      <div class="stat-label">${s.label}</div>
+    </div>`).join("");
+}
+
+// ── TABS ──
+function renderTabs(){
+  document.getElementById("tabs-wrap").innerHTML=TABS_LIST.map(t=>{
+    const cnt=t==="All"?ORDERS.length:ORDERS.filter(o=>o.status===t).length;
+    return `<button class="tab ${activeTab===t?"active":""}" onclick="setTab('${t}')">${t}<span class="cnt">(${cnt})</span></button>`;
+  }).join("");
+}
+
+function setTab(t){activeTab=t;page=1;renderTabs();renderTable();}
+
+// ── TABLE ──
+function badgeClass(s){return{Pending:"pending",Processing:"processing","Out for Delivery":"delivery",Delivered:"delivered",Cancelled:"cancelled"}[s]||"";}
+
+function renderTable(){
+  const rows=filtered();
+  const slice=rows.slice((page-1)*PER,page*PER);
+  const tbody=document.getElementById("orders-tbody");
+  const empty=document.getElementById("empty-state");
+  if(!rows.length){tbody.innerHTML="";empty.style.display="block";document.getElementById("pagination").innerHTML="";return;}
+  empty.style.display="none";
+  tbody.innerHTML=slice.map(o=>`<tr>
+    <td><span class="order-id">${o.id}</span></td>
+    <td><div class="cust-name">${o.name}</div><div class="cust-phone">${o.phone}</div></td>
+    <td><div class="date-cell">${o.date}<br><span>${o.time}</span></div></td>
+    <td style="text-align:center">${o.items.length}</td>
+    <td><span class="amount">₹${getTotal(o).toLocaleString("en-IN")}</span></td>
+    <td>${o.payment}</td>
+    <td><span class="badge ${o.paid?"paid":"unpaid"}">${o.paid?"Paid":"Unpaid"}</span></td>
+    <td><span class="badge ${badgeClass(o.status)}">${o.status}</span></td>
+    <td><div class="action-btns">
+      <button class="act view" onclick="openModal('${o.id}')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>View</button>
+      <button class="act del" onclick="deleteOrder('${o.id}')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg></button>
+    </div></td>
+  </tr>`).join("");
+  renderPagination(rows.length);
+}
+
+function renderPagination(total){
+  const pages=Math.ceil(total/PER);
+  const pg=document.getElementById("pagination");
+  if(pages<=1){pg.innerHTML=`<span class="pg-info">Showing ${total} order${total!==1?"s":""}</span><div></div>`;return;}
+  const start=(page-1)*PER+1,end=Math.min(page*PER,total);
+  let btns=`<button class="pg-btn" onclick="goPage(${page-1})" ${page===1?"disabled":""}>‹ Prev</button>`;
+  for(let i=1;i<=pages;i++)btns+=`<button class="pg-btn ${i===page?"active":""}" onclick="goPage(${i})">${i}</button>`;
+  btns+=`<button class="pg-btn" onclick="goPage(${page+1})" ${page===pages?"disabled":""}>Next ›</button>`;
+  pg.innerHTML=`<span class="pg-info">Showing ${start}–${end} of ${total} orders</span><div class="pg-btns">${btns}</div>`;
+}
+
+function goPage(p){page=p;renderTable();}
+
+// ── MODAL ──
+function openModal(id){
+  const o=ORDERS.find(x=>x.id===id);if(!o)return;
+  const sub=o.items.reduce((a,i)=>a+i.qty*i.price,0);
+  const grand=sub+o.delivery-o.discount;
+  const tl=["Ordered","Confirmed","Processing","Out for Delivery","Delivered"];
+  const si={Pending:0,Processing:2,"Out for Delivery":3,Delivered:4,Cancelled:-1}[o.status]??0;
+  const tlHTML=tl.map((s,i)=>{
+    let cls=o.status==="Cancelled"&&i>0?"skip":i<si?"done":i===si?"current":"";
+    return `<span class="tl-step ${cls}">${s}</span>${i<tl.length-1?'<span class="tl-arr">→</span>':""}`;
+  }).join("");
+  const opts=STATUSES.map(s=>`<option value="${s}" ${s===o.status?"selected":""}>${s}</option>`).join("");
+  document.getElementById("modal-content").innerHTML=`
+    <div class="modal-header">
+      <div style="display:flex;align-items:center;gap:8px">
+        <h3>Order Details</h3>
+        <span class="order-id-tag">${o.id}</span>
+        <span class="badge ${badgeClass(o.status)}">${o.status}</span>
+      </div>
+      <button class="close-x" onclick="closeModal()">×</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-title">Customer information</div>
+        <div class="info-grid">
+          <div class="info-field"><label>Name</label><span>${o.name}</span></div>
+          <div class="info-field"><label>Phone</label><span>${o.phone}</span></div>
+          <div class="info-field"><label>Email</label><span>${o.email}</span></div>
+          <div class="info-field"><label>Date & time</label><span>${o.date} at ${o.time}</span></div>
+          <div class="info-field full"><label>Delivery address</label><span>${o.address}</span></div>
+        </div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">Order timeline</div>
+        <div class="timeline">${tlHTML}</div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">Ordered items</div>
+        <table class="items-table">
+          <thead><tr><th>Product</th><th style="text-align:center">Qty</th><th style="text-align:right">Unit price</th><th style="text-align:right">Total</th></tr></thead>
+          <tbody>${o.items.map(i=>`<tr><td>${i.n}</td><td style="text-align:center">${i.qty}</td><td style="text-align:right">₹${i.price}</td><td style="text-align:right">₹${(i.qty*i.price).toLocaleString("en-IN")}</td></tr>`).join("")}</tbody>
+        </table>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">Bill summary</div>
+        <div class="totals-box">
+          <div class="total-row"><span>Subtotal</span><span>₹${sub.toLocaleString("en-IN")}</span></div>
+          <div class="total-row"><span>Delivery charge</span><span>₹${o.delivery}</span></div>
+          <div class="total-row"><span>Discount</span><span style="color:var(--green)">- ₹${o.discount}</span></div>
+          <div class="total-row grand"><span>Grand total</span><span>₹${grand.toLocaleString("en-IN")}</span></div>
+        </div>
+        <div style="margin-top:10px;display:flex;gap:8px;align-items:center;font-size:13px">
+          <span style="color:var(--text2)">Payment: <strong>${o.payment}</strong></span>
+          <span class="badge ${o.paid?"paid":"unpaid"}">${o.paid?"Paid":"Unpaid"}</span>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <select id="modal-status-sel">${opts}</select>
+      <button class="btn-update" onclick="updateStatus('${o.id}')">✓ Update Status</button>
+      <button class="btn-print" onclick="printInvoice('${o.id}')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        Print Invoice
+      </button>
+    </div>`;
+  document.getElementById("modal-overlay").classList.add("open");
+}
+
+function closeModal(){document.getElementById("modal-overlay").classList.remove("open");}
+
+function updateStatus(id){
+  const sel=document.getElementById("modal-status-sel").value;
+  const o=ORDERS.find(x=>x.id===id);
+  if(o){o.status=sel;renderAll();openModal(id);showToast("Status updated to: "+sel);}
+}
+
+function deleteOrder(id){
+  if(confirm("Delete order "+id+"?\nThis action cannot be undone.")){
+    ORDERS=ORDERS.filter(x=>x.id!==id);
+    renderAll();closeModal();showToast("Order "+id+" deleted.");
+  }
+}
+
+function printInvoice(id){
+  const o=ORDERS.find(x=>x.id===id);if(!o)return;
+  const sub=o.items.reduce((a,i)=>a+i.qty*i.price,0);
+  const grand=sub+o.delivery-o.discount;
+  const w=window.open("","_blank","width=600,height=700");
+  w.document.write(`<!DOCTYPE html><html><head><title>Invoice ${o.id}</title>
+  <style>body{font-family:Arial,sans-serif;padding:2rem;font-size:13px;color:#111}
+  h2{color:#16a34a}table{width:100%;border-collapse:collapse;margin:1rem 0}
+  th,td{padding:8px 10px;border:1px solid #e5e7eb;text-align:left}th{background:#f3f4f6}
+  .total{text-align:right;font-weight:bold}.footer{margin-top:2rem;text-align:center;font-size:11px;color:#888}
+  </style></head><body>
+  <h2>Kamala Supermarket</h2>
+  <p>Main Road, Villupuram, Tamil Nadu 605602 | Ph: +91 84386 59762</p>
+  <hr/><h3>Invoice: ${o.id}</h3>
+  <p>Customer: <b>${o.name}</b> | Phone: ${o.phone}<br/>Address: ${o.address}<br/>Date: ${o.date} ${o.time}</p>
+  <table><thead><tr><th>Product</th><th>Qty</th><th>Price</th><th>Total</th></tr></thead>
+  <tbody>${o.items.map(i=>`<tr><td>${i.n}</td><td>${i.qty}</td><td>₹${i.price}</td><td>₹${i.qty*i.price}</td></tr>`).join("")}</tbody></table>
+  <p class="total">Subtotal: ₹${sub} | Delivery: ₹${o.delivery} | Discount: -₹${o.discount} | <b>Grand Total: ₹${grand}</b></p>
+  <p>Payment: ${o.payment} | Status: <b>${o.paid?"Paid":"Unpaid"}</b></p>
+  <div class="footer">Thank you for shopping at Kamala Supermarket! | Built by IdeaManifest</div>
+  <script>window.print();<\/script></body></html>`);
+}
+
+// ── TOAST ──
+function showToast(msg){
+  const t=document.getElementById("toast");
+  t.textContent=msg;t.classList.add("show");
+  setTimeout(()=>t.classList.remove("show"),2800);
+}
+
+// ── INIT ──
+function renderAll(){renderStats();renderTabs();renderTable();}
+
+document.getElementById("search-input").addEventListener("input",e=>{searchQ=e.target.value.toLowerCase();page=1;renderTable();});
+document.getElementById("filter-date").addEventListener("change",e=>{filterDate=e.target.value;page=1;renderTable();});
+document.getElementById("filter-pay").addEventListener("change",e=>{filterPay=e.target.value;page=1;renderTable();});
+document.getElementById("filter-paid").addEventListener("change",e=>{filterPaid=e.target.value;page=1;renderTable();});
+document.getElementById("modal-overlay").addEventListener("click",e=>{if(e.target===document.getElementById("modal-overlay"))closeModal();});
+document.getElementById("p-input").addEventListener("keydown",e=>{if(e.key==="Enter")doLogin();});
+</script>
+</body>
+</html>
