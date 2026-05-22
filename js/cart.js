@@ -360,15 +360,71 @@ const Checkout = {
                 <div class="gateway-summary-icon">💳</div>
                 <div>
                   <h4>Card / Net Banking Gateway</h4>
-                  <p>Choose this if the customer wants to pay by card, net banking, wallet, EMI, or Pay Later. The shop should send or verify the secure Razorpay payment before dispatch.</p>
+                  <p>Preview your card details below. The actual payment will be processed securely through Razorpay's gateway — no card data is stored on our servers.</p>
                 </div>
               </div>
-              <div class="gateway-safe-note">
-                <strong>No card details are collected here.</strong>
-                <span>All sensitive payment details must be entered only inside the secure Razorpay/payment gateway page.</span>
+
+              <!-- Interactive Card Visualization -->
+              <div class="card-visualization-container">
+                <div class="credit-card-box" id="credit-card-box">
+                  <div class="card-face front">
+                    <div class="card-glow"></div>
+                    <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+                      <div class="card-chip"></div>
+                      <div class="card-logo" id="vis-card-brand">RUPAY</div>
+                    </div>
+                    <div class="card-number-display" id="vis-card-num">•••• •••• •••• ••••</div>
+                    <div class="card-details-row">
+                      <div>
+                        <span class="card-label">Card Holder</span>
+                        <span class="card-val" id="vis-card-holder">YOUR NAME</span>
+                      </div>
+                      <div>
+                        <span class="card-label">Expires</span>
+                        <span class="card-val" id="vis-card-expiry">MM/YY</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-face back">
+                    <div class="card-magnetic-stripe"></div>
+                    <div class="card-signature-bar">
+                      <span class="card-cvv-display" id="vis-card-cvv">•••</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card Form Inputs -->
+              <div class="card-form-inputs">
+                <div class="card-input-group">
+                  <label for="card-number-input">Card Number</label>
+                  <div class="card-number-wrapper">
+                    <input type="text" id="card-number-input" class="checkout-input" placeholder="1234 5678 9012 3456" maxlength="19" inputmode="numeric" oninput="Checkout.syncCardField('number', this.value)" onfocus="Checkout.flipCard(false)">
+                    <span class="input-card-brand brand-rupay" id="input-card-brand">RUPAY</span>
+                  </div>
+                </div>
+                <div class="card-input-group">
+                  <label for="card-holder-input">Card Holder Name</label>
+                  <input type="text" id="card-holder-input" class="checkout-input" placeholder="Full name on card" oninput="Checkout.syncCardField('holder', this.value)" onfocus="Checkout.flipCard(false)">
+                </div>
+                <div class="card-input-row">
+                  <div class="card-input-group">
+                    <label for="card-expiry-input">Expiry Date</label>
+                    <input type="text" id="card-expiry-input" class="checkout-input" placeholder="MM/YY" maxlength="5" inputmode="numeric" oninput="Checkout.syncCardField('expiry', this.value)" onfocus="Checkout.flipCard(false)">
+                  </div>
+                  <div class="card-input-group">
+                    <label for="card-cvv-input">CVV</label>
+                    <input type="password" id="card-cvv-input" class="checkout-input" placeholder="•••" maxlength="4" inputmode="numeric" oninput="Checkout.syncCardField('cvv', this.value)" onfocus="Checkout.flipCard(true)">
+                  </div>
+                </div>
+              </div>
+
+              <div class="gateway-safe-note" style="margin-top: var(--space-4);">
+                <strong>🔒 Your card is secure.</strong>
+                <span>Card details are only used for preview. Actual payment is handled through Razorpay's PCI-DSS compliant, 256-bit SSL encrypted gateway.</span>
               </div>
               
-              <div class="rzp-methods-row">
+              <div class="rzp-methods-row" style="margin-top: var(--space-3);">
                 <span class="rzp-method-badge">💳 Credit Card</span>
                 <span class="rzp-method-badge">💳 Debit Card</span>
                 <span class="rzp-method-badge">🏦 Net Banking</span>
