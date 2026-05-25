@@ -1757,7 +1757,7 @@
   <tbody>${o.items.map(i => `<tr><td>${i.n}</td><td>${i.qty}</td><td>₹${i.price}</td><td>₹${i.qty * i.price}</td></tr>`).join("")}</tbody></table>
   <p class="total">Subtotal: ₹${sub} | Delivery: ₹${o.delivery} | Discount: -₹${o.discount} | <b>Grand Total: ₹${grand}</b></p>
   <p>Payment: ${o.payment} | Status: <b>${o.paid ? "Paid" : "Unpaid"}</b></p>
-  <div class="footer">Thank you for shopping at Kamala Supermarket! | Built by IdeaManifest</div>
+  <div class="footer">Thank you for shopping at Kamala Supermarket!</div>
   <script>window.print();<\/script></body></html>`);
     }
 

@@ -44,7 +44,7 @@ async function runTest(viewport, label) {
   await page.fill('#co-name', 'John Doe');
   await page.fill('#co-phone', '9998887777');
   await page.selectOption('#co-area', 'town');
-  await page.fill('#co-address', '123 Sample St, Villupuram');
+  await page.fill('#co-address', '123 Sample St, Nagercoil');
 
   // Proceed to Step 2
   await page.click('#checkout-next-btn');
