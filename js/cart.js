@@ -273,10 +273,10 @@ const Checkout = {
               <label for="co-area">Delivery Area *</label>
               <select id="co-area" class="checkout-select" onchange="Checkout.updateArea(this.value)" required>
                 <option value="" disabled selected>Select your delivery area</option>
-                <option value="town">Nagercoil Town (Free, Min ₹200)</option>
+                <option value="town">NGO Colony / Nagercoil Town (Free, Min ₹200)</option>
                 <option value="anna">Anna Nagar / Gandhi Nagar (Free, Min ₹200)</option>
-                <option value="kak">Kakuppam / Salamedu (₹30 delivery fee)</option>
-                <option value="valu">Valudhareddy / Janakipuram (₹40 delivery fee)</option>
+                <option value="vettu">Vetturnimadam / Parvathipuram (₹30 delivery fee)</option>
+                <option value="asari">Asaripallam / Vadasery (₹40 delivery fee)</option>
                 <option value="other">Other Suburbs (₹50 delivery fee)</option>
               </select>
             </div>
@@ -551,9 +551,9 @@ const Checkout = {
   updateArea(value) {
     if (value === 'town' || value === 'anna') {
       this.deliveryFee = 0;
-    } else if (value === 'kak') {
+    } else if (value === 'vettu') {
       this.deliveryFee = 30;
-    } else if (value === 'valu') {
+    } else if (value === 'asari') {
       this.deliveryFee = 40;
     } else if (value === 'other') {
       this.deliveryFee = 50;
