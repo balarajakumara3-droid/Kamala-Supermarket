@@ -1,7 +1,7 @@
 {
   "name": "kamala-supermarket",
   "version": "1.0.0",
-  "description": "Kamala Supermarket — Fresh Groceries Delivered in Villupuram",
+  "description": "Kamala Supermarket — Fresh Groceries Delivered in Nagercoil",
   "main": "index.html",
   "scripts": {
     "start": "npx http-server -p 3000",

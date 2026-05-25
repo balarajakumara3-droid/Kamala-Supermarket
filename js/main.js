@@ -10,7 +10,7 @@ const CONFIG = {
   storeName: 'Kamala Supermarket',
   whatsappNumber: '918438659762', // Dynamically bound user WhatsApp number
   phone: '+91 84386 59762',
-  address: 'Main Road, Villupuram, Tamil Nadu 605602',
+  address: 'NGO Colony 4th Street, Main Road, Nagercoil, Tamil Nadu 605602',
   workingHours: 'Mon–Sat: 7:00 AM – 10:00 PM | Sun: 8:00 AM – 9:00 PM',
   minOrder: 200,
   freeDeliveryAbove: 500,

@@ -273,7 +273,7 @@ const Checkout = {
               <label for="co-area">Delivery Area *</label>
               <select id="co-area" class="checkout-select" onchange="Checkout.updateArea(this.value)" required>
                 <option value="" disabled selected>Select your delivery area</option>
-                <option value="town">Villupuram Town (Free, Min ₹200)</option>
+                <option value="town">Nagercoil Town (Free, Min ₹200)</option>
                 <option value="anna">Anna Nagar / Gandhi Nagar (Free, Min ₹200)</option>
                 <option value="kak">Kakuppam / Salamedu (₹30 delivery fee)</option>
                 <option value="valu">Valudhareddy / Janakipuram (₹40 delivery fee)</option>

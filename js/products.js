@@ -95,16 +95,16 @@ const Products = {
     const search = this.currentFilters.search;
     const storeName = window.KS ? window.KS.CONFIG.storeName : 'Kamala Supermarket';
 
-    let title = `All Products — ${storeName} | Shop Groceries Online Villupuram`;
-    let description = `Browse our complete collection of fresh groceries and essentials at ${storeName}. Best prices, fast same-day delivery in Villupuram!`;
+    let title = `All Products — ${storeName} | Shop Groceries Online Nagercoil`;
+    let description = `Browse our complete collection of fresh groceries and essentials at ${storeName}. Best prices, fast same-day delivery in Nagercoil!`;
 
     if (category) {
-      title = `${category} — Buy Fresh Groceries Online | ${storeName} Villupuram`;
-      description = `Shop fresh, high-quality ${category.toLowerCase()} online at ${storeName}. Best rates and direct same-day home delivery in Villupuram!`;
+      title = `${category} — Buy Fresh Groceries Online | ${storeName} Nagercoil`;
+      description = `Shop fresh, high-quality ${category.toLowerCase()} online at ${storeName}. Best rates and direct same-day home delivery in Nagercoil!`;
     } else if (search) {
       const queryEscaped = search.replace(/"/g, '&quot;');
       title = `Search Results for "${search}" — ${storeName}`;
-      description = `Browse matching results for "${queryEscaped}" at ${storeName} Villupuram. Find fresh groceries, snacks, household items, and more!`;
+      description = `Browse matching results for "${queryEscaped}" at ${storeName} Nagercoil. Find fresh groceries, snacks, household items, and more!`;
     }
 
     document.title = title;
